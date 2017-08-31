@@ -1,0 +1,305 @@
+﻿<Page
+    x:Class="Blizzard_Tiles_2.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="Page_Loaded" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="gridTopAcrilico" Grid.Row="0" Height="32"/>
+        <Grid Grid.Row="0">
+            <Grid.Background>
+                <SolidColorBrush Color="MidnightBlue" Opacity="0.6"/>
+            </Grid.Background>
+
+            <TextBlock x:Name="tbTitulo" Foreground="White" Margin="65,0,0,0" VerticalAlignment="Center" FontSize="13"/>
+        </Grid>
+        <Grid Grid.Row="1" Background="Transparent">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid x:Name="gridMenuAcrilico" Grid.Column="0"/>
+            <Grid x:Name="gridMenu" Grid.Column="0">
+                <Grid.Background>
+                    <SolidColorBrush Color="MidnightBlue" Opacity="0.6"/>
+                </Grid.Background>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Orientation="Vertical">
+                    <Button x:Name="botonTiles" Foreground="White" Background="Transparent" Padding="15">
+                        <ToolTipService.ToolTip>
+                            <TextBlock x:Name="botonTilesTexto" FontSize="16"/>
+                        </ToolTipService.ToolTip>
+
+                        <Button.Content>
+                            <Image Source="Assets\blizzard_logo.png" Width="26" Height="26" HorizontalAlignment="Center"/>
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="botonConfig" Foreground="White" Background="Transparent" Padding="15">
+                        <ToolTipService.ToolTip>
+                            <TextBlock x:Name="botonConfigTexto" FontSize="16"/>
+                        </ToolTipService.ToolTip>
+
+                        <Button.Content>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE713;" FontSize="26" HorizontalAlignment="Center"/>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Orientation="Vertical">
+                    <Button x:Name="botonVotar" Foreground="White" Background="Transparent" Padding="15">
+                        <ToolTipService.ToolTip>
+                            <TextBlock x:Name="botonVotarTexto" FontSize="16"/>
+                        </ToolTipService.ToolTip>
+
+                        <Button.Content>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE8E1;" FontSize="26" HorizontalAlignment="Center"/>
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="botonMasCosas" Foreground="White" Background="Transparent" Padding="15">
+                        <ToolTipService.ToolTip>
+                            <TextBlock x:Name="botonMasCosasTexto" FontSize="16"/>
+                        </ToolTipService.ToolTip>
+
+                        <Button.Content>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE712;" FontSize="26" HorizontalAlignment="Center"/>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <Grid x:Name="gridTilesBlizzard" Grid.Column="1" Visibility="Collapsed">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#FFE4E4E4" Offset="0.5" />
+                        <GradientStop Color="#FFBFBFBF" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Grid.Background>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid x:Name="gridAñadirTiles" Grid.Row="0" Visibility="Collapsed">
+                    <Grid.ChildrenTransitions>
+                        <TransitionCollection>
+                            <PaneThemeTransition Edge="Top"/>
+                        </TransitionCollection>
+                    </Grid.ChildrenTransitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <controls:DropShadowPanel Grid.Column="0" Margin="2"
+                                                  Color="Black" BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                            <Button x:Name="botonAñadirTile" Padding="15,10" Background="Navy">
+                                <StackPanel Orientation="Horizontal">
+                                    <SymbolIcon Margin="0,0,10,0" VerticalAlignment="Center" Symbol="Add" Foreground="White"/>
+                                    <TextBlock x:Name="botonAñadirTileTexto" Foreground="White"/>
+                                </StackPanel>
+                            </Button>
+                        </controls:DropShadowPanel>
+
+                        <Border Grid.Column="1" Margin="15,0,5,0" BorderThickness="1" BorderBrush="Black" Width="129" Height="49" VerticalAlignment="Center">
+                            <controls:ImageEx x:Name="imageJuegoSeleccionado" Stretch="UniformToFill" IsCacheEnabled="True"/>
+                        </Border>
+
+                        <TextBlock x:Name="tbJuegoSeleccionado" Grid.Column="2" VerticalAlignment="Center" Margin="5,0"/>
+
+                        <CheckBox x:Name="cbTilesTitulo" Grid.Column="3" VerticalAlignment="Center" Margin="10,0" MinWidth="0"/>
+                        <CheckBox x:Name="cbTilesIconos" Grid.Column="4" VerticalAlignment="Center" Margin="10,0" MinWidth="0"/>
+                        <ComboBox x:Name="cbTilesIconosLista" Grid.Column="5" VerticalAlignment="Center" Margin="5,0" Visibility="Collapsed" Width="40" Padding="5,0,0,0">
+                            <ComboBox.Transitions>
+                                <TransitionCollection>
+                                    <PaneThemeTransition Edge="Top"/>
+                                </TransitionCollection>
+                            </ComboBox.Transitions>
+
+                            <ComboBox.ItemContainerStyle>
+                                <Style TargetType="ComboBoxItem">
+                                    <Setter Property="Width" Value="70"/>
+                                    <Setter Property="Margin" Value="0"/>
+                                </Style>
+                            </ComboBox.ItemContainerStyle>
+
+                            <ComboBox.ItemContainerTransitions>
+                                <TransitionCollection>
+                                    <PaneThemeTransition Edge="Top"/>
+                                </TransitionCollection>
+                            </ComboBox.ItemContainerTransitions>
+
+                            <controls:ImageEx Source="Assets/blizzard_logo_mini1.png" Width="16" Height="16"/>
+                            <controls:ImageEx Source="Assets/blizzard_logo_mini2.png" Width="16" Height="16"/>
+                        </ComboBox>
+                    </Grid>
+
+                    <Border Grid.Row="1" BorderThickness="1" BorderBrush="SlateGray" VerticalAlignment="Bottom" Margin="10,0"/>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <controls:AdaptiveGridView x:Name="gridViewTilesBlizzard" Grid.Column="0" Margin="10,10,0,0"
+                                       IsItemClickEnabled="True" DesiredWidth="238" ItemHeight="128" 
+                                       animations:ReorderGridAnimation.Duration="250">
+                        <controls:AdaptiveGridView.ItemContainerStyle>
+                            <Style TargetType="GridViewItem">
+                                <Setter Property="Margin" Value="1"/>
+                            </Style>
+                        </controls:AdaptiveGridView.ItemContainerStyle>
+                    </controls:AdaptiveGridView> 
+
+                    <controls:DropShadowPanel x:Name="panelAvisoNoJuegosBlizzard" Grid.Column="1" Margin="10" Color="Black" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5" Visibility="Collapsed">
+                        <Grid Padding="10" Background="IndianRed">
+                            <TextBlock x:Name="tbNoJuegosBlizzard" TextWrapping="Wrap" Foreground="White"/>
+                        </Grid> 
+                    </controls:DropShadowPanel>
+
+                    <ProgressRing x:Name="prTilesBlizzard" Grid.Column="0" IsActive="True" Width="64" Height="64" Foreground="Navy" Visibility="Collapsed"/>
+                </Grid>
+            </Grid>
+
+            <Popup x:Name="popupAvisoSeleccionar" Grid.Column="1" Margin="20" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <Popup.ChildTransitions>
+                    <TransitionCollection>
+                        <PaneThemeTransition Edge="Right"/>
+                    </TransitionCollection>
+                </Popup.ChildTransitions>
+
+                <controls:DropShadowPanel x:Name="panelAvisoSeleccionar" Margin="1" Color="Black"
+                                          BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                    <Grid Padding="10" Background="IndianRed">
+                        <TextBlock x:Name="tbAvisoSeleccionar" TextWrapping="Wrap" Foreground="White"/>
+                    </Grid>
+                </controls:DropShadowPanel>
+            </Popup>
+
+            <Grid x:Name="gridConfig" Grid.Column="1" Visibility="Collapsed">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#FFE4E4E4" Offset="0.5" />
+                        <GradientStop Color="#FFBFBFBF" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Grid.Background>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <controls:DropShadowPanel Grid.Column="0" Margin="10" VerticalAlignment="Top" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                    <StackPanel Background="Navy">
+                        <Button x:Name="buttonConfigBlizzard" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" Width="200" Foreground="White">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <controls:ImageEx Margin="10,0" Source="Assets\blizzard_logo.png" Width="20" Height="20"/>
+                                    <TextBlock Text="Blizzard App"/>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
+                </controls:DropShadowPanel>
+
+                <Grid x:Name="gridConfigBlizzard" Grid.Column="1" Visibility="Collapsed">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Name="tbBlizzardConfigInstrucciones" Grid.Row="0" Margin="10,20,10,10" TextWrapping="Wrap"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <controls:DropShadowPanel Grid.Column="0" Margin="10" Color="Black" BlurRadius="4" ShadowOpacity="0.5" 
+                                                  OffsetZ="5">
+                            <Button x:Name="buttonAñadirCarpetaBlizzard" Padding="10" Background="Navy">
+                                <StackPanel Orientation="Horizontal">
+                                    <SymbolIcon Symbol="Add" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                    <TextBlock x:Name="buttonAñadirCarpetaBlizzardTexto" Foreground="White"/>
+                                </StackPanel>
+                            </Button>
+                        </controls:DropShadowPanel>
+
+                        <TextBlock x:Name="tbBlizzardConfigCarpeta" Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                    </Grid>
+                </Grid>               
+            </Grid>
+
+            <Popup x:Name="popupMasCosas" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                <Popup.ChildTransitions>
+                    <TransitionCollection>
+                        <PaneThemeTransition Edge="Left"/>
+                    </TransitionCollection>
+                </Popup.ChildTransitions>
+
+                <StackPanel x:Name="spMasCosas" Orientation="Vertical" Width="200" Background="Navy">
+                    <Button x:Name="botonMasApps" Padding="10" Foreground="White" Width="200" HorizontalContentAlignment="Left">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <controls:ImageEx Source="Assets\social_pepeizq.png" Margin="0,0,10,0" Width="20" Height="20" IsCacheEnabled="True"/>
+                                <TextBlock x:Name="botonMasAppsTexto" Foreground="White" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="botonContacto" Padding="10" Foreground="White" Width="200" HorizontalContentAlignment="Left">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <controls:ImageEx Source="Assets\social_contacto.png" Margin="0,0,10,0" Width="20" Height="20" IsCacheEnabled="True"/>
+                                <TextBlock x:Name="botonContactoTexto" Foreground="White" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="botonReportar" Padding="10" Foreground="White" Width="200" HorizontalContentAlignment="Left">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <controls:ImageEx Source="Assets\social_feedback.png" Margin="0,0,10,0" Width="20" Height="20" IsCacheEnabled="True"/>
+                                <TextBlock x:Name="botonReportarTexto" Foreground="White" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="botonCodigoFuente" Padding="10" Foreground="White" Width="200" HorizontalContentAlignment="Left">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <controls:ImageEx Source="Assets\social_github.png" Margin="0,0,10,0" Width="20" Height="20" IsCacheEnabled="True"/>
+                                <TextBlock x:Name="botonCodigoFuenteTexto" Foreground="White" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </Popup>
+        </Grid> 
+    </Grid>
+</Page>
