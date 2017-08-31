@@ -11,7 +11,7 @@ Public NotInheritable Class MainPage
     Private Sub Page_Loaded(sender As Object, e As RoutedEventArgs)
 
         'Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "es-ES"
-        'Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en-US"
+        Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en-US"
 
         Acrilico.Generar(gridTopAcrilico)
         Acrilico.Generar(gridMenuAcrilico)
