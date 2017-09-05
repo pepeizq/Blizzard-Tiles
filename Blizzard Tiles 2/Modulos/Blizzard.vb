@@ -50,6 +50,10 @@ Module Blizzard
                 For Each fichero As StorageFile In ficheros
                     Dim nombreFichero As String = fichero.DisplayName.ToLower
 
+                    If nombreFichero = "destiny2" And fichero.FileType = ".exe" Then
+                        detectadoBool = True
+                    End If
+
                     If nombreFichero = "diablo iii" And fichero.FileType = ".exe" Then
                         detectadoBool = True
                     End If
@@ -96,46 +100,71 @@ Module Blizzard
                         Dim nombreFichero As String = fichero.DisplayName.ToLower
 
                         Dim ejecutable As String = Nothing
-                        Dim imagen As String = Nothing
+                        Dim imagenWide As String = Nothing
+                        Dim imagenMedium As String = Nothing
+                        Dim imagenSmall As String = Nothing
+
+                        If nombreFichero = "destiny2" And fichero.FileType = ".exe" Then
+                            ejecutable = "battlenet://DST2"
+                            imagenWide = "ms-appx:///Assets/Juegos/de2.png"
+                            imagenMedium = "ms-appx:///Assets/Juegos/de2m.jpg"
+                            imagenSmall = "ms-appx:///Assets/Juegos/de2s.jpg"
+                        End If
 
                         If nombreFichero = "diablo iii" And fichero.FileType = ".exe" Then
                             ejecutable = "battlenet://D3"
-                            imagen = "ms-appx:///Assets/Juegos/di3.jpg"
+                            imagenWide = "ms-appx:///Assets/Juegos/di3.jpg"
+                            imagenMedium = "ms-appx:///Assets/Juegos/di3m.jpg"
+                            imagenSmall = "ms-appx:///Assets/Juegos/di3s.png"
                         End If
 
                         If nombreFichero = "hearthstone" And fichero.FileType = ".exe" Then
                             ejecutable = "battlenet://WTCG"
-                            imagen = "ms-appx:///Assets/Juegos/hea.jpg"
+                            imagenWide = "ms-appx:///Assets/Juegos/hea.jpg"
+                            imagenMedium = "ms-appx:///Assets/Juegos/heam.jpg"
+                            imagenSmall = "ms-appx:///Assets/Juegos/heas.png"
                         End If
 
                         If nombreFichero = "heroes of the storm" And fichero.FileType = ".exe" Then
                             ejecutable = "battlenet://Hero"
-                            imagen = "ms-appx:///Assets/Juegos/her.jpg"
+                            imagenWide = "ms-appx:///Assets/Juegos/her.jpg"
+                            imagenMedium = "ms-appx:///Assets/Juegos/herm.jpg"
+                            imagenSmall = "ms-appx:///Assets/Juegos/hers.png"
                         End If
 
                         If nombreFichero = "overwatch" And fichero.FileType = ".exe" Then
                             ejecutable = "battlenet://Pro"
-                            imagen = "ms-appx:///Assets/Juegos/ove.png"
+                            imagenWide = "ms-appx:///Assets/Juegos/ove.png"
+                            imagenMedium = "ms-appx:///Assets/Juegos/ovem.jpg"
+                            imagenSmall = "ms-appx:///Assets/Juegos/oves.png"
                         End If
 
                         If nombreFichero = "starcraft" And fichero.FileType = ".exe" Then
                             ejecutable = "battlenet://S1"
-                            imagen = "ms-appx:///Assets/Juegos/sc1.jpg"
+                            imagenWide = "ms-appx:///Assets/Juegos/sc1.jpg"
+                            imagenMedium = "ms-appx:///Assets/Juegos/sc1m.jpg"
+                            imagenSmall = "ms-appx:///Assets/Juegos/sc1s.png"
                         End If
 
                         If nombreFichero = "sc2" And fichero.FileType = ".exe" Then
                             ejecutable = "battlenet://S2"
-                            imagen = "ms-appx:///Assets/Juegos/sc2.jpg"
+                            imagenWide = "ms-appx:///Assets/Juegos/sc2.jpg"
+                            imagenMedium = "ms-appx:///Assets/Juegos/sc2m.jpg"
+                            imagenSmall = "ms-appx:///Assets/Juegos/sc2s.png"
                         End If
 
                         If nombreFichero = "starcraft ii" And fichero.FileType = ".exe" Then
                             ejecutable = "battlenet://S2"
-                            imagen = "ms-appx:///Assets/Juegos/sc2.jpg"
+                            imagenWide = "ms-appx:///Assets/Juegos/sc2.jpg"
+                            imagenMedium = "ms-appx:///Assets/Juegos/sc2m.jpg"
+                            imagenSmall = "ms-appx:///Assets/Juegos/sc2s.png"
                         End If
 
                         If nombreFichero = "wow" And fichero.FileType = ".exe" Then
                             ejecutable = "battlenet://WoW"
-                            imagen = "ms-appx:///Assets/Juegos/wow.jpg"
+                            imagenWide = "ms-appx:///Assets/Juegos/wow.jpg"
+                            imagenMedium = "ms-appx:///Assets/Juegos/wowm.jpg"
+                            imagenSmall = "ms-appx:///Assets/Juegos/wows.png"
                         End If
 
                         If Not ejecutable = Nothing Then
@@ -151,7 +180,7 @@ Module Blizzard
                             End While
 
                             If tituloBool = False Then
-                                Dim juego As New Tile(titulo, Nothing, New Uri(ejecutable), New Uri(imagen), "Blizzard App", Nothing)
+                                Dim juego As New Tile(titulo, Nothing, New Uri(ejecutable), New Uri(imagenWide), New Uri(imagenMedium), New Uri(imagenSmall), "Blizzard App", Nothing)
                                 listaJuegos.Add(juego)
                             End If
                         End If
@@ -178,7 +207,7 @@ Module Blizzard
                 Dim imagen As New ImageEx
 
                 Try
-                    imagen.Source = New BitmapImage(juego.Imagen)
+                    imagen.Source = New BitmapImage(juego.ImagenWide)
                 Catch ex As Exception
 
                 End Try
@@ -248,7 +277,7 @@ Module Blizzard
             botonAñadirTile.Tag = juego
 
             Dim imageJuegoSeleccionado As ImageEx = pagina.FindName("imageJuegoSeleccionado")
-            Dim imagenCapsula As String = juego.Imagen.ToString
+            Dim imagenCapsula As String = juego.ImagenWide.ToString
             imageJuegoSeleccionado.Source = New BitmapImage(New Uri(imagenCapsula))
 
             Dim tbJuegoSeleccionado As TextBlock = pagina.FindName("tbJuegoSeleccionado")

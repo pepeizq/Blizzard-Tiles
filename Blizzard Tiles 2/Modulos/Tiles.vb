@@ -8,10 +8,10 @@ Module Tiles
 
     Public Async Sub Generar(tile As Tile)
 
-        Dim nuevaTile As SecondaryTile = New SecondaryTile(tile.Titulo.Replace(" ", Nothing), tile.Titulo, tile.Enlace.ToString, tile.Imagen, TileSize.Wide310x150)
+        Dim nuevaTile As SecondaryTile = New SecondaryTile(tile.Titulo.Replace(" ", Nothing), tile.Titulo, tile.Enlace.ToString, tile.ImagenWide, TileSize.Wide310x150)
 
-        nuevaTile.VisualElements.Wide310x150Logo = New Uri(tile.Imagen.AbsoluteUri, UriKind.RelativeOrAbsolute)
-        nuevaTile.VisualElements.Square310x310Logo = New Uri(tile.Imagen.AbsoluteUri, UriKind.RelativeOrAbsolute)
+        nuevaTile.VisualElements.Wide310x150Logo = New Uri(tile.ImagenWide.AbsoluteUri, UriKind.RelativeOrAbsolute)
+        nuevaTile.VisualElements.Square310x310Logo = New Uri(tile.ImagenWide.AbsoluteUri, UriKind.RelativeOrAbsolute)
 
         Await nuevaTile.RequestCreateAsync()
 
@@ -32,21 +32,31 @@ Module Tiles
         End If
 
         Dim imagen As AdaptiveImage = New AdaptiveImage With {
-            .Source = tile.Imagen.AbsoluteUri,
+            .Source = tile.ImagenWide.AbsoluteUri,
             .HintRemoveMargin = True,
             .HintAlign = AdaptiveImageAlign.Stretch,
             .HintCrop = AdaptiveImageCrop.Default
         }
 
-        Dim fondoImagen As TileBackgroundImage = New TileBackgroundImage With {
-            .Source = tile.Imagen.AbsoluteUri,
+        Dim fondoImagenWide As TileBackgroundImage = New TileBackgroundImage With {
+            .Source = tile.ImagenWide.AbsoluteUri,
+            .HintCrop = AdaptiveImageCrop.Default
+        }
+
+        Dim fondoImagenMedium As TileBackgroundImage = New TileBackgroundImage With {
+            .Source = tile.ImagenMedium.AbsoluteUri,
+            .HintCrop = AdaptiveImageCrop.Default
+        }
+
+        Dim fondoImagenSmall As TileBackgroundImage = New TileBackgroundImage With {
+            .Source = tile.ImagenSmall.AbsoluteUri,
             .HintCrop = AdaptiveImageCrop.Default
         }
 
         '-----------------------
 
         Dim contenidoWide As TileBindingContentAdaptive = New TileBindingContentAdaptive With {
-            .BackgroundImage = fondoImagen
+            .BackgroundImage = fondoImagenWide
         }
 
         If Not imagenDRM Is Nothing Then
@@ -59,21 +69,9 @@ Module Tiles
 
         '-----------------------
 
-        Dim contenidoSmall As TileBindingContentAdaptive = New TileBindingContentAdaptive
-        contenidoSmall.Children.Add(imagen)
-
-        If Not imagenDRM Is Nothing Then
-            contenidoSmall.Children.Add(imagenDRM)
-        End If
-
-        Dim tileSmall As TileBinding = New TileBinding With {
-            .Content = contenidoSmall
+        Dim contenidoMedium As TileBindingContentAdaptive = New TileBindingContentAdaptive With {
+            .BackgroundImage = fondoImagenMedium
         }
-
-        '-----------------------
-
-        Dim contenidoMedium As TileBindingContentAdaptive = New TileBindingContentAdaptive
-        contenidoMedium.Children.Add(imagen)
 
         If Not imagenDRM Is Nothing Then
             contenidoMedium.Children.Add(imagenDRM)
@@ -81,6 +79,20 @@ Module Tiles
 
         Dim tileMedium As TileBinding = New TileBinding With {
             .Content = contenidoMedium
+        }
+
+        '-----------------------
+
+        Dim contenidoSmall As TileBindingContentAdaptive = New TileBindingContentAdaptive With {
+            .BackgroundImage = fondoImagenSmall
+        }
+
+        If Not imagenDRM Is Nothing Then
+            contenidoSmall.Children.Add(imagenDRM)
+        End If
+
+        Dim tileSmall As TileBinding = New TileBinding With {
+            .Content = contenidoSmall
         }
 
         '-----------------------
