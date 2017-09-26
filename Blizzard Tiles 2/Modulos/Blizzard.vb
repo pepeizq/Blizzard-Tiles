@@ -6,14 +6,14 @@ Imports Windows.UI
 
 Module Blizzard
 
-    Public Async Sub CargarJuegos(boolBuscarCarpeta As Boolean)
+    Public Async Sub Generar(boolBuscarCarpeta As Boolean)
 
         Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
 
         Dim frame As Frame = Window.Current.Content
         Dim pagina As Page = frame.Content
 
-        Dim botonAñadirCarpetaTexto As TextBlock = pagina.FindName("buttonAñadirCarpetaBlizzardTexto")
+        Dim botonAñadirCarpetaTexto As TextBlock = pagina.FindName("botonAñadirCarpetaBlizzardTexto")
 
         Dim botonCarpetaTexto As TextBlock = pagina.FindName("tbBlizzardConfigCarpeta")
 
@@ -91,7 +91,7 @@ Module Blizzard
             If detectadoBool = True Then
                 StorageApplicationPermissions.FutureAccessList.AddOrReplace("BattlenetCarpeta", carpeta)
                 botonCarpetaTexto.Text = carpeta.Path
-                botonAñadirCarpetaTexto.Text = recursos.GetString("Boton Cambiar")
+                botonAñadirCarpetaTexto.Text = recursos.GetString("Change")
 
                 For Each carpetaJuego As StorageFolder In carpetasJuegos
                     Dim ficheros As IReadOnlyList(Of StorageFile) = Await carpetaJuego.GetFilesAsync()
@@ -189,13 +189,14 @@ Module Blizzard
             End If
         End If
 
-        Dim panelNoJuegos As DropShadowPanel = pagina.FindName("panelAvisoNoJuegosBlizzard")
-        Dim popupAviso As Popup = pagina.FindName("popupAvisoSeleccionar")
+        Dim panelNoJuegos As DropShadowPanel = pagina.FindName("panelAvisoNoJuegos")
+        Dim gridSeleccionar As Grid = pagina.FindName("gridSeleccionarJuego")
 
         If listaJuegos.Count > 0 Then
             panelNoJuegos.Visibility = Visibility.Collapsed
+            gridSeleccionar.Visibility = Visibility.Visible
+
             gv.Visibility = Visibility.Visible
-            popupAviso.IsOpen = True
 
             listaJuegos.Sort(Function(x, y) x.Titulo.CompareTo(y.Titulo))
 
@@ -235,10 +236,15 @@ Module Blizzard
 
                 gv.Items.Add(boton)
             Next
+
+            If boolBuscarCarpeta = True Then
+                Toast(listaJuegos.Count.ToString + " " + recursos.GetString("GamesDetected"), Nothing)
+            End If
         Else
             panelNoJuegos.Visibility = Visibility.Visible
+            gridSeleccionar.Visibility = Visibility.Collapsed
+
             gv.Visibility = Visibility.Collapsed
-            popupAviso.IsOpen = False
         End If
 
     End Sub
@@ -257,11 +263,11 @@ Module Blizzard
             botonJuego.BorderThickness = New Thickness(1, 1, 1, 1)
             botonJuego.BorderBrush = New SolidColorBrush(Colors.Black)
 
-            Dim popupAviso As Popup = pagina.FindName("popupAvisoSeleccionar")
-            popupAviso.IsOpen = True
-
             Dim grid As Grid = pagina.FindName("gridAñadirTiles")
             grid.Visibility = Visibility.Collapsed
+
+            Dim gridSeleccionar As Grid = pagina.FindName("gridSeleccionarJuego")
+            gridSeleccionar.Visibility = Visibility.Visible
         Else
             For Each item In gv.Items
                 Dim itemBoton As Button = item
@@ -283,11 +289,11 @@ Module Blizzard
             Dim tbJuegoSeleccionado As TextBlock = pagina.FindName("tbJuegoSeleccionado")
             tbJuegoSeleccionado.Text = juego.Titulo
 
-            Dim popupAviso As Popup = pagina.FindName("popupAvisoSeleccionar")
-            popupAviso.IsOpen = False
-
             Dim grid As Grid = pagina.FindName("gridAñadirTiles")
             grid.Visibility = Visibility.Visible
+
+            Dim gridSeleccionar As Grid = pagina.FindName("gridSeleccionarJuego")
+            gridSeleccionar.Visibility = Visibility.Collapsed
         End If
 
     End Sub
