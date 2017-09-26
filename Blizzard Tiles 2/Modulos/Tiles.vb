@@ -11,7 +11,7 @@ Module Tiles
         Dim nuevaTile As SecondaryTile = New SecondaryTile(tile.Titulo.Replace(" ", Nothing), tile.Titulo, tile.Enlace.ToString, tile.ImagenWide, TileSize.Wide310x150)
 
         nuevaTile.VisualElements.Wide310x150Logo = New Uri(tile.ImagenWide.AbsoluteUri, UriKind.RelativeOrAbsolute)
-        nuevaTile.VisualElements.Square310x310Logo = New Uri(tile.ImagenWide.AbsoluteUri, UriKind.RelativeOrAbsolute)
+        'nuevaTile.VisualElements.Square310x310Logo = New Uri(tile.ImagenWide.AbsoluteUri, UriKind.RelativeOrAbsolute)
 
         Await nuevaTile.RequestCreateAsync()
 
@@ -87,9 +87,9 @@ Module Tiles
             .BackgroundImage = fondoImagenSmall
         }
 
-        If Not imagenDRM Is Nothing Then
-            contenidoSmall.Children.Add(imagenDRM)
-        End If
+        'If Not imagenDRM Is Nothing Then
+        '    contenidoSmall.Children.Add(imagenDRM)
+        'End If
 
         Dim tileSmall As TileBinding = New TileBinding With {
             .Content = contenidoSmall
