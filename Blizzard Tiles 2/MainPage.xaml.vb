@@ -1,5 +1,4 @@
 ﻿Imports Microsoft.Services.Store.Engagement
-Imports Microsoft.Toolkit.Uwp.Helpers
 Imports Windows.ApplicationModel.Core
 Imports Windows.Storage
 Imports Windows.System
@@ -58,37 +57,11 @@ Public NotInheritable Class MainPage
         Blizzard.Generar(False)
         Config.Generar()
 
-        'botonTilesTexto.Text = recursos.GetString("Tiles")
-        'botonConfigTexto.Text = recursos.GetString("Boton Config")
-        'botonVotarTexto.Text = recursos.GetString("Boton Votar")
-        'botonMasCosasTexto.Text = recursos.GetString("Boton Cosas")
-
-        'botonMasAppsTexto.Text = recursos.GetString("Boton Web")
-        'botonContactoTexto.Text = recursos.GetString("Boton Contacto")
-        'botonReportarTexto.Text = recursos.GetString("Boton Reportar")
-        'botonCodigoFuenteTexto.Text = recursos.GetString("Boton Codigo Fuente")
-
-        'tbNoJuegosBlizzard.Text = recursos.GetString("No Config")
-        'tbAvisoSeleccionar.Text = recursos.GetString("Seleccionar")
-
-        'botonAñadirTileTexto.Text = recursos.GetString("Añadir Tile")
-
-        'cbTilesTitulo.Content = recursos.GetString("Tile Titulo")
-        'cbTilesIconos.Content = recursos.GetString("Tile Logo")
-
-        'tbBlizzardConfigInstrucciones.Text = recursos.GetString("Blizzard Carpeta Añadir")
-        'buttonAñadirCarpetaBlizzardTexto.Text = recursos.GetString("Boton Añadir")
-        'tbBlizzardConfigCarpeta.Text = recursos.GetString("Blizzard Carpeta No Config")
-
-        '----------------------------------------------
-
-
-
     End Sub
 
     Private Sub GridVisibilidad(grid As Grid, tag As String)
 
-        tbTitulo.Text = "Blizzard Tiles (" + SystemInformation.ApplicationVersion.Major.ToString + "." + SystemInformation.ApplicationVersion.Minor.ToString + "." + SystemInformation.ApplicationVersion.Build.ToString + "." + SystemInformation.ApplicationVersion.Revision.ToString + ") - " + tag
+        tbTitulo.Text = Package.Current.DisplayName + " (" + Package.Current.Id.Version.Major.ToString + "." + Package.Current.Id.Version.Minor.ToString + "." + Package.Current.Id.Version.Build.ToString + "." + Package.Current.Id.Version.Revision.ToString + ") - " + tag
 
         gridTiles.Visibility = Visibility.Collapsed
         gridConfig.Visibility = Visibility.Collapsed
