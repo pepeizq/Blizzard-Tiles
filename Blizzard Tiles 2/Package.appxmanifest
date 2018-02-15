@@ -4,7 +4,7 @@
   <mp:PhoneIdentity PhoneProductId="24cc08a1-1a9b-4ef3-9dd0-856071a35e16" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Blizzard Tiles</DisplayName>
-    <PublisherDisplayName>pepeizq</PublisherDisplayName>
+    <PublisherDisplayName>pepeizq's apps</PublisherDisplayName>
     <Logo>Assets\Logos\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
