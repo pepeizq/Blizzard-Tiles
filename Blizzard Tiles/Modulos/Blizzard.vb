@@ -3,6 +3,7 @@ Imports Windows.Storage
 Imports Windows.Storage.AccessCache
 Imports Windows.Storage.Pickers
 Imports Windows.UI
+Imports Windows.UI.Core
 Imports Windows.UI.Xaml.Media.Animation
 
 Module Blizzard
@@ -101,71 +102,91 @@ Module Blizzard
                         Dim nombreFichero As String = fichero.DisplayName.ToLower
 
                         Dim ejecutable As String = Nothing
-                        Dim imagenWide As String = Nothing
-                        Dim imagenMedium As String = Nothing
-                        Dim imagenSmall As String = Nothing
+                        Dim clave As String = Nothing
+
+                        Dim imagenPequeña As String = Nothing
+                        Dim imagenMediana As String = Nothing
+                        Dim imagenAncha As String = Nothing
 
                         If nombreFichero = "destiny2" And fichero.FileType = ".exe" Then
                             ejecutable = "battlenet://DST2"
-                            imagenWide = "ms-appx:///Assets/Juegos/de2.png"
-                            imagenMedium = "ms-appx:///Assets/Juegos/de2m.jpg"
-                            imagenSmall = "ms-appx:///Assets/Juegos/de2s.jpg"
+                            clave = "DST2"
+
+                            imagenPequeña = "ms-appx:///Assets/Juegos/de2s.jpg"
+                            imagenMediana = "ms-appx:///Assets/Juegos/de2m.jpg"
+                            imagenAncha = "ms-appx:///Assets/Juegos/de2.png"
                         End If
 
                         If nombreFichero = "diablo iii" And fichero.FileType = ".exe" Then
                             ejecutable = "battlenet://D3"
-                            imagenWide = "ms-appx:///Assets/Juegos/di3.jpg"
-                            imagenMedium = "ms-appx:///Assets/Juegos/di3m.jpg"
-                            imagenSmall = "ms-appx:///Assets/Juegos/di3s.png"
+                            clave = "D3"
+
+                            imagenPequeña = "ms-appx:///Assets/Juegos/di3s.png"
+                            imagenMediana = "ms-appx:///Assets/Juegos/di3m.jpg"
+                            imagenAncha = "ms-appx:///Assets/Juegos/di3.jpg"
                         End If
 
                         If nombreFichero = "hearthstone" And fichero.FileType = ".exe" Then
                             ejecutable = "battlenet://WTCG"
-                            imagenWide = "ms-appx:///Assets/Juegos/hea.jpg"
-                            imagenMedium = "ms-appx:///Assets/Juegos/heam.jpg"
-                            imagenSmall = "ms-appx:///Assets/Juegos/heas.png"
+                            clave = "WTCG"
+
+                            imagenPequeña = "ms-appx:///Assets/Juegos/heas.png"
+                            imagenMediana = "ms-appx:///Assets/Juegos/heam.jpg"
+                            imagenAncha = "ms-appx:///Assets/Juegos/hea.jpg"
                         End If
 
                         If nombreFichero = "heroes of the storm" And fichero.FileType = ".exe" Then
                             ejecutable = "battlenet://Hero"
-                            imagenWide = "ms-appx:///Assets/Juegos/her.jpg"
-                            imagenMedium = "ms-appx:///Assets/Juegos/herm.jpg"
-                            imagenSmall = "ms-appx:///Assets/Juegos/hers.png"
+                            clave = "Hero"
+
+                            imagenPequeña = "ms-appx:///Assets/Juegos/hers.png"
+                            imagenMediana = "ms-appx:///Assets/Juegos/herm.jpg"
+                            imagenAncha = "ms-appx:///Assets/Juegos/her.jpg"
                         End If
 
                         If nombreFichero = "overwatch" And fichero.FileType = ".exe" Then
                             ejecutable = "battlenet://Pro"
-                            imagenWide = "ms-appx:///Assets/Juegos/ove.png"
-                            imagenMedium = "ms-appx:///Assets/Juegos/ovem.jpg"
-                            imagenSmall = "ms-appx:///Assets/Juegos/oves.png"
+                            clave = "Pro"
+
+                            imagenPequeña = "ms-appx:///Assets/Juegos/oves.png"
+                            imagenMediana = "ms-appx:///Assets/Juegos/ovem.jpg"
+                            imagenAncha = "ms-appx:///Assets/Juegos/ove.png"
                         End If
 
                         If nombreFichero = "starcraft" And fichero.FileType = ".exe" Then
                             ejecutable = "battlenet://S1"
-                            imagenWide = "ms-appx:///Assets/Juegos/sc1.jpg"
-                            imagenMedium = "ms-appx:///Assets/Juegos/sc1m.jpg"
-                            imagenSmall = "ms-appx:///Assets/Juegos/sc1s.png"
+                            clave = "S1"
+
+                            imagenPequeña = "ms-appx:///Assets/Juegos/sc1s.png"
+                            imagenMediana = "ms-appx:///Assets/Juegos/sc1m.jpg"
+                            imagenAncha = "ms-appx:///Assets/Juegos/sc1.jpg"
                         End If
 
                         If nombreFichero = "sc2" And fichero.FileType = ".exe" Then
                             ejecutable = "battlenet://S2"
-                            imagenWide = "ms-appx:///Assets/Juegos/sc2.jpg"
-                            imagenMedium = "ms-appx:///Assets/Juegos/sc2m.jpg"
-                            imagenSmall = "ms-appx:///Assets/Juegos/sc2s.png"
+                            clave = "S2"
+
+                            imagenPequeña = "ms-appx:///Assets/Juegos/sc2s.png"
+                            imagenMediana = "ms-appx:///Assets/Juegos/sc2m.jpg"
+                            imagenAncha = "ms-appx:///Assets/Juegos/sc2.jpg"
                         End If
 
                         If nombreFichero = "starcraft ii" And fichero.FileType = ".exe" Then
                             ejecutable = "battlenet://S2"
-                            imagenWide = "ms-appx:///Assets/Juegos/sc2.jpg"
-                            imagenMedium = "ms-appx:///Assets/Juegos/sc2m.jpg"
-                            imagenSmall = "ms-appx:///Assets/Juegos/sc2s.png"
+                            clave = "S2"
+
+                            imagenPequeña = "ms-appx:///Assets/Juegos/sc2s.png"
+                            imagenMediana = "ms-appx:///Assets/Juegos/sc2m.jpg"
+                            imagenAncha = "ms-appx:///Assets/Juegos/sc2.jpg"
                         End If
 
                         If nombreFichero = "wow" And fichero.FileType = ".exe" Then
                             ejecutable = "battlenet://WoW"
-                            imagenWide = "ms-appx:///Assets/Juegos/wow.jpg"
-                            imagenMedium = "ms-appx:///Assets/Juegos/wowm.jpg"
-                            imagenSmall = "ms-appx:///Assets/Juegos/wows.png"
+                            clave = "WoW"
+
+                            imagenPequeña = "ms-appx:///Assets/Juegos/wows.png"
+                            imagenMediana = "ms-appx:///Assets/Juegos/wowm.jpg"
+                            imagenAncha = "ms-appx:///Assets/Juegos/wow.jpg"
                         End If
 
                         If Not ejecutable = Nothing Then
@@ -181,7 +202,7 @@ Module Blizzard
                             End While
 
                             If tituloBool = False Then
-                                Dim juego As New Tile(titulo, Nothing, New Uri(ejecutable), New Uri(imagenWide), New Uri(imagenMedium), New Uri(imagenSmall), "Blizzard App", Nothing)
+                                Dim juego As New Tile(titulo, clave, New Uri(ejecutable), New Uri(imagenPequeña), New Uri(imagenMediana), New Uri(imagenAncha), New Uri(imagenMediana))
                                 listaJuegos.Add(juego)
                             End If
                         End If
@@ -209,7 +230,7 @@ Module Blizzard
                 Dim imagen As New ImageEx
 
                 Try
-                    imagen.Source = New BitmapImage(juego.ImagenWide)
+                    imagen.Source = New BitmapImage(juego.ImagenMediana)
                 Catch ex As Exception
 
                 End Try
@@ -234,6 +255,8 @@ Module Blizzard
                 ToolTipService.SetPlacement(boton, PlacementMode.Mouse)
 
                 AddHandler boton.Click, AddressOf BotonTile_Click
+                AddHandler boton.PointerEntered, AddressOf UsuarioEntraBoton
+                AddHandler boton.PointerExited, AddressOf UsuarioSaleBoton
 
                 gv.Items.Add(boton)
             Next
@@ -255,62 +278,79 @@ Module Blizzard
         Dim frame As Frame = Window.Current.Content
         Dim pagina As Page = frame.Content
 
-        Dim tbTitulo As TextBlock = pagina.FindName("tbTitulo")
-
-        Dim gv As GridView = pagina.FindName("gridViewTilesBlizzard")
-
         Dim botonJuego As Button = e.OriginalSource
+        Dim juego As Tile = botonJuego.Tag
 
-        Dim borde As Thickness = New Thickness(6, 6, 6, 6)
-        If botonJuego.BorderThickness = borde Then
-            botonJuego.BorderThickness = New Thickness(1, 1, 1, 1)
-            botonJuego.BorderBrush = New SolidColorBrush(Colors.Black)
+        Dim botonAñadirTile As Button = pagina.FindName("botonAñadirTile")
+        botonAñadirTile.Tag = juego
 
-            Dim gridAñadir As Grid = pagina.FindName("gridAñadirTiles")
-            gridAñadir.Visibility = Visibility.Collapsed
+        Dim imagenJuegoSeleccionado As ImageEx = pagina.FindName("imagenJuegoSeleccionado")
+        imagenJuegoSeleccionado.Source = New BitmapImage(juego.ImagenMediana)
 
-            Dim gridSeleccionar As Grid = pagina.FindName("gridSeleccionarJuego")
-            gridSeleccionar.Visibility = Visibility.Visible
+        Dim tbJuegoSeleccionado As TextBlock = pagina.FindName("tbJuegoSeleccionado")
+        tbJuegoSeleccionado.Text = juego.Titulo
 
-            Dim recursos As New Resources.ResourceLoader()
-            tbTitulo.Text = Package.Current.DisplayName + " (" + Package.Current.Id.Version.Major.ToString + "." + Package.Current.Id.Version.Minor.ToString + "." + Package.Current.Id.Version.Build.ToString + "." + Package.Current.Id.Version.Revision.ToString + ") - " + recursos.GetString("Tiles")
-        Else
-            For Each item In gv.Items
-                Dim itemBoton As Button = item
-                itemBoton.BorderThickness = New Thickness(1, 1, 1, 1)
-                itemBoton.BorderBrush = New SolidColorBrush(Colors.Black)
-            Next
+        Dim gridAñadir As Grid = pagina.FindName("gridAñadirTile")
+        gridAñadir.Visibility = Visibility.Visible
 
-            botonJuego.BorderThickness = New Thickness(6, 6, 6, 6)
-            botonJuego.BorderBrush = New SolidColorBrush(App.Current.Resources("ColorSecundario"))
+        ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("tile", botonJuego)
 
-            Dim botonAñadirTile As Button = pagina.FindName("botonAñadirTile")
-            Dim juego As Tile = botonJuego.Tag
-            botonAñadirTile.Tag = juego
+        Dim animacion As ConnectedAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("tile")
 
-            Dim imageJuegoSeleccionado As ImageEx = pagina.FindName("imageJuegoSeleccionado")
-            Dim imagenCapsula As String = juego.ImagenWide.ToString
-            imageJuegoSeleccionado.Source = New BitmapImage(New Uri(imagenCapsula))
-
-            Dim tbJuegoSeleccionado As TextBlock = pagina.FindName("tbJuegoSeleccionado")
-            tbJuegoSeleccionado.Text = juego.Titulo
-
-            Dim gridAñadir As Grid = pagina.FindName("gridAñadirTiles")
-            gridAñadir.Visibility = Visibility.Visible
-
-            ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("tile", botonJuego)
-
-            Dim animacion As ConnectedAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("tile")
-
-            If Not animacion Is Nothing Then
-                animacion.TryStart(gridAñadir)
-            End If
-
-            Dim gridSeleccionar As Grid = pagina.FindName("gridSeleccionarJuego")
-            gridSeleccionar.Visibility = Visibility.Collapsed
-
-            tbTitulo.Text = Package.Current.DisplayName + " (" + Package.Current.Id.Version.Major.ToString + "." + Package.Current.Id.Version.Minor.ToString + "." + Package.Current.Id.Version.Build.ToString + "." + Package.Current.Id.Version.Revision.ToString + ") - " + juego.Titulo
+        If Not animacion Is Nothing Then
+            animacion.TryStart(gridAñadir)
         End If
+
+        Dim tbTitulo As TextBlock = pagina.FindName("tbTitulo")
+        tbTitulo.Text = Package.Current.DisplayName + " (" + Package.Current.Id.Version.Major.ToString + "." + Package.Current.Id.Version.Minor.ToString + "." + Package.Current.Id.Version.Build.ToString + "." + Package.Current.Id.Version.Revision.ToString + ") - " + juego.Titulo
+
+        '---------------------------------------------
+
+        Dim imagenPequeña As ImageEx = pagina.FindName("imagenTilePequeña")
+        imagenPequeña.Source = juego.ImagenPequeña
+        imagenPequeña.Visibility = Visibility.Visible
+
+        Dim tbPequeña As TextBlock = pagina.FindName("tbTilePequeña")
+        tbPequeña.Visibility = Visibility.Collapsed
+
+        '---------------------------------------------
+
+        Dim imagenMediana As ImageEx = pagina.FindName("imagenTileMediana")
+        imagenMediana.Source = juego.ImagenMediana
+        imagenMediana.Visibility = Visibility.Visible
+
+        Dim tbMediana As TextBlock = pagina.FindName("tbTileMediana")
+        tbMediana.Visibility = Visibility.Collapsed
+
+        '---------------------------------------------
+
+        Dim imagenAncha As ImageEx = pagina.FindName("imagenTileAncha")
+        imagenAncha.Source = juego.ImagenAncha
+        imagenAncha.Visibility = Visibility.Visible
+
+        Dim tbAncha As TextBlock = pagina.FindName("tbTileAncha")
+        tbAncha.Visibility = Visibility.Collapsed
+
+        '---------------------------------------------
+
+        Dim imagenGrande As ImageEx = pagina.FindName("imagenTileGrande")
+        imagenGrande.Source = juego.ImagenGrande
+        imagenGrande.Visibility = Visibility.Visible
+
+        Dim tbGrande As TextBlock = pagina.FindName("tbTileGrande")
+        tbGrande.Visibility = Visibility.Collapsed
+
+    End Sub
+
+    Private Sub UsuarioEntraBoton(sender As Object, e As PointerRoutedEventArgs)
+
+        Window.Current.CoreWindow.PointerCursor = New CoreCursor(CoreCursorType.Hand, 1)
+
+    End Sub
+
+    Private Sub UsuarioSaleBoton(sender As Object, e As PointerRoutedEventArgs)
+
+        Window.Current.CoreWindow.PointerCursor = New CoreCursor(CoreCursorType.Arrow, 1)
 
     End Sub
 
