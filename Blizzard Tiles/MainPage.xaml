@@ -224,7 +224,7 @@
                                 <StackPanel Orientation="Vertical" Padding="15">
                                     <TextBlock x:Uid="ConfigBlizzardFolderMessage" TextWrapping="Wrap"/>
 
-                                    <Button x:Name="botonAñadirCarpetaBlizzard" Padding="10" Margin="0,10" Background="{StaticResource BrushSecundario}">
+                                    <Button x:Name="botonAñadirCarpetaBlizzard" Padding="10" Margin="0,10" Background="{StaticResource BrushSecundario}" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton">
                                         <StackPanel Orientation="Horizontal">
                                             <SymbolIcon Symbol="NewFolder" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Name="botonAñadirCarpetaBlizzardTexto" x:Uid="ConfigSteamAddFolder" Foreground="White"/>
