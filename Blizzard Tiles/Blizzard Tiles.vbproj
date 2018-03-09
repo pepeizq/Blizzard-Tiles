@@ -208,6 +208,7 @@
     <Content Include="Assets\Logos\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Logos\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Logos\Wide310x150Logo.scale-400.png" />
+    <Content Include="LICENSE.txt" />
     <Content Include="My Project\Default.rd.xml" />
     <None Include="Package.xml" />
     <None Include="Package.StoreAssociation.xml" />
