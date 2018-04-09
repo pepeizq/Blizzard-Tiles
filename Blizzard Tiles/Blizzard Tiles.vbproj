@@ -131,6 +131,7 @@
     <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\blizzard_logo.png" />
     <Content Include="Assets\blizzard_logo_mini1.png" />
     <Content Include="Assets\blizzard_logo_mini2.png" />
     <Content Include="Assets\Juegos\de2.png" />
@@ -157,7 +158,6 @@
     <Content Include="Assets\Juegos\wow.jpg" />
     <Content Include="Assets\Juegos\wowm.jpg" />
     <Content Include="Assets\Juegos\wows.png" />
-    <Content Include="Assets\blizzard_logo.png" />
     <Content Include="Assets\Logos\BadgeLogo.scale-100.png" />
     <Content Include="Assets\Logos\BadgeLogo.scale-125.png" />
     <Content Include="Assets\Logos\BadgeLogo.scale-150.png" />
