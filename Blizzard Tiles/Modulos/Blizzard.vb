@@ -203,7 +203,7 @@ Module Blizzard
                             End While
 
                             If tituloBool = False Then
-                                Dim juego As New Tile(titulo, clave, New Uri(ejecutable), New Uri(imagenPequeña), New Uri(imagenMediana), New Uri(imagenAncha), New Uri(imagenMediana))
+                                Dim juego As New Tile(titulo, clave, ejecutable, New Uri(imagenPequeña), New Uri(imagenMediana), New Uri(imagenAncha), New Uri(imagenMediana))
                                 listaJuegos.Add(juego)
                             End If
                         End If

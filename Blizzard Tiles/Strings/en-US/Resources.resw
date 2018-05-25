@@ -189,6 +189,9 @@
   <data name="ColorTitle.Text" xml:space="preserve">
     <value>Title</value>
   </data>
+  <data name="ConfigAddFolder.Text" xml:space="preserve">
+    <value>Add Folder</value>
+  </data>
   <data name="ConfigTileImageAxisX.Text" xml:space="preserve">
     <value>Axis X</value>
   </data>
