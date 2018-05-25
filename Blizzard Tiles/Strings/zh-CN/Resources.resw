@@ -150,14 +150,8 @@
   <data name="MoreThings_SourceCode" xml:space="preserve">
     <value>查看源代码</value>
   </data>
-  <data name="TileIcon.Text" xml:space="preserve">
-    <value>添加图标</value>
-  </data>
   <data name="Tiles" xml:space="preserve">
     <value>磁贴</value>
-  </data>
-  <data name="TileTitle.Text" xml:space="preserve">
-    <value>添加标题</value>
   </data>
   <data name="MoreThings_VoteApp" xml:space="preserve">
     <value>在商店评分</value>
