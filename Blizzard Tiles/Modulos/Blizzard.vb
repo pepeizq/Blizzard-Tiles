@@ -88,6 +88,10 @@ Module Blizzard
                     If nombreFichero = "wow" And fichero.FileType = ".exe" Then
                         detectadoBool = True
                     End If
+
+                    If nombreFichero = "blackops4" And fichero.FileType = ".exe" Then
+                        detectadoBool = True
+                    End If
                 Next
             Next
 
@@ -113,7 +117,7 @@ Module Blizzard
                             ejecutable = "battlenet://DST2"
                             clave = "DST2"
 
-                            imagenPequeña = "ms-appx:///Assets/Juegos/de2s.jpg"
+                            imagenPequeña = "ms-appx:///Assets/Juegos/de2s.png"
                             imagenMediana = "ms-appx:///Assets/Juegos/de2m.jpg"
                             imagenAncha = "ms-appx:///Assets/Juegos/de2.png"
                         End If
@@ -188,6 +192,15 @@ Module Blizzard
                             imagenPequeña = "ms-appx:///Assets/Juegos/wows.png"
                             imagenMediana = "ms-appx:///Assets/Juegos/wowm.jpg"
                             imagenAncha = "ms-appx:///Assets/Juegos/wow.jpg"
+                        End If
+
+                        If nombreFichero = "blackops4" And fichero.FileType = ".exe" Then
+                            ejecutable = "battlenet://VIPR"
+                            clave = "VIPR"
+
+                            imagenPequeña = "ms-appx:///Assets/Juegos/bo4s.png"
+                            imagenMediana = "ms-appx:///Assets/Juegos/bo4m.jpg"
+                            imagenAncha = "ms-appx:///Assets/Juegos/bo4.png"
                         End If
 
                         If Not ejecutable = Nothing Then

@@ -138,9 +138,12 @@
     <Content Include="Assets\blizzard_logo.png" />
     <Content Include="Assets\blizzard_logo_mini1.png" />
     <Content Include="Assets\blizzard_logo_mini2.png" />
+    <Content Include="Assets\Juegos\bo4.png" />
+    <Content Include="Assets\Juegos\bo4m.jpg" />
+    <Content Include="Assets\Juegos\bo4s.png" />
     <Content Include="Assets\Juegos\de2.png" />
     <Content Include="Assets\Juegos\de2m.jpg" />
-    <Content Include="Assets\Juegos\de2s.jpg" />
+    <Content Include="Assets\Juegos\de2s.png" />
     <Content Include="Assets\Juegos\di3.jpg" />
     <Content Include="Assets\Juegos\di3m.jpg" />
     <Content Include="Assets\Juegos\di3s.png" />
