@@ -186,4 +186,10 @@
   <data name="StoreTags" xml:space="preserve">
     <value>Battle.net;Blizzard;Kafelki;Warcraft;Starcraft;Overwatch;Diablo</value>
   </data>
+  <data name="ConfigTileMode1.Content" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ConfigTileMode2.Content" xml:space="preserve">
+    <value />
+  </data>
 </root>

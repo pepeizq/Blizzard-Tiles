@@ -9,6 +9,14 @@ Module Configuracion
 
     Public Sub Iniciar()
 
+        If ApplicationData.Current.LocalSettings.Values("modo_tiles") Is Nothing Then
+            ModoTiles(0)
+        Else
+            ModoTiles(ApplicationData.Current.LocalSettings.Values("modo_tiles"))
+        End If
+
+        '------------------------------------------
+
         If ApplicationData.Current.LocalSettings.Values("mostrar_tile_pequeña") Is Nothing Then
             MostrarTilePequeña(True)
         Else
@@ -210,6 +218,36 @@ Module Configuracion
         Else
             TileGrandeImagenZoom(ApplicationData.Current.LocalSettings.Values("tile_grande_imagen_zoom"), ApplicationData.Current.LocalSettings.Values("tile_grande_imagen_coordenadaX"), ApplicationData.Current.LocalSettings.Values("tile_grande_imagen_coordenadaY"))
         End If
+
+    End Sub
+
+    Public Sub ModoTiles(modo As Integer)
+
+        ApplicationData.Current.LocalSettings.Values("modo_tiles") = modo
+
+        Dim frame As Frame = Window.Current.Content
+        Dim pagina As Page = frame.Content
+
+        Dim cb1 As CheckBox = pagina.FindName("cbModoTile1")
+        Dim cb2 As CheckBox = pagina.FindName("cbModoTile2")
+
+        If modo = 0 Then
+            cb1.IsChecked = True
+            cb2.IsChecked = False
+        ElseIf modo = 1 Then
+            cb1.IsChecked = False
+            cb2.IsChecked = True
+        End If
+
+        Dim sp2 As StackPanel = pagina.FindName("spModoTile2")
+
+        If cb2.IsChecked = True Then
+            sp2.Visibility = Visibility.Visible
+        Else
+            sp2.Visibility = Visibility.Collapsed
+        End If
+
+        Blizzard.Generar(False)
 
     End Sub
 

@@ -108,34 +108,6 @@ Public NotInheritable Class MainPage
 
     End Sub
 
-    Private Sub UsuarioEntraBoton2(sender As Object, e As PointerRoutedEventArgs)
-
-        Window.Current.CoreWindow.PointerCursor = New CoreCursor(CoreCursorType.Hand, 1)
-
-        Dim boton As Button = sender
-        Dim grid As Grid = boton.Content
-        Dim icono As FontAwesome.UWP.FontAwesome = grid.Children(1)
-
-        If icono.Visibility = Visibility.Visible Then
-            icono.Foreground = New SolidColorBrush(Colors.White)
-        End If
-
-    End Sub
-
-    Private Sub UsuarioSaleBoton2(sender As Object, e As PointerRoutedEventArgs)
-
-        Window.Current.CoreWindow.PointerCursor = New CoreCursor(CoreCursorType.Arrow, 1)
-
-        Dim boton As Button = sender
-        Dim grid As Grid = boton.Content
-        Dim icono As FontAwesome.UWP.FontAwesome = grid.Children(1)
-
-        If icono.Visibility = Visibility.Visible Then
-            icono.Foreground = New SolidColorBrush(App.Current.Resources("ColorSecundario"))
-        End If
-
-    End Sub
-
     'TILES-------------------------------------------------------
 
     Private Sub BotonAñadirTile_Click(sender As Object, e As RoutedEventArgs) Handles botonAñadirTile.Click
@@ -490,6 +462,18 @@ Public NotInheritable Class MainPage
     End Sub
 
     'CONFIG-----------------------------------------------------------------------------
+
+    Private Sub CbModoTile1_Checked(sender As Object, e As RoutedEventArgs) Handles cbModoTile1.Checked
+
+        Configuracion.ModoTiles(0)
+
+    End Sub
+
+    Private Sub CbModoTile2_Checked(sender As Object, e As RoutedEventArgs) Handles cbModoTile2.Checked
+
+        Configuracion.ModoTiles(1)
+
+    End Sub
 
     Private Sub BotonAñadirCarpetaBlizzard_Click(sender As Object, e As RoutedEventArgs) Handles botonAñadirCarpetaBlizzard.Click
 

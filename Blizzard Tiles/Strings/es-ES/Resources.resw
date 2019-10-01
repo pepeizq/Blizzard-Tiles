@@ -258,4 +258,10 @@
   <data name="TileWide.Text" xml:space="preserve">
     <value>Tile Ancha</value>
   </data>
+  <data name="ConfigTileMode1.Content" xml:space="preserve">
+    <value>Enseñar Todos los Juegos</value>
+  </data>
+  <data name="ConfigTileMode2.Content" xml:space="preserve">
+    <value>Enseñar los Juegos Instalados</value>
+  </data>
 </root>

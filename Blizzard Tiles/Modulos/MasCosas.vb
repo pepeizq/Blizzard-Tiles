@@ -47,22 +47,6 @@ Module MasCosas
         Dim menu As MenuFlyout = pagina.FindName("botonMasCosasMenu")
         menu.Placement = FlyoutPlacementMode.Top
 
-        Dim iconoVotar As New FontAwesome.UWP.FontAwesome With {
-            .Icon = FontAwesomeIcon.ThumbsOutlineUp
-        }
-
-        Dim menuItemVotar As New MenuFlyoutItem With {
-            .Text = recursos.GetString("MoreThings_VoteApp"),
-            .Icon = iconoVotar
-        }
-
-        AddHandler menuItemVotar.Click, AddressOf MenuItemVotarClick
-        AddHandler menuItemVotar.PointerEntered, AddressOf UsuarioEntraBoton
-        AddHandler menuItemVotar.PointerExited, AddressOf UsuarioSaleBoton
-
-        menu.Items.Add(menuItemVotar)
-        menu.Items.Add(New MenuFlyoutSeparator)
-
         Dim iconoMasApps As New FontAwesome.UWP.FontAwesome With {
             .Icon = FontAwesomeIcon.PlusCircle
         }
@@ -77,6 +61,38 @@ Module MasCosas
         AddHandler menuItemMasApps.PointerExited, AddressOf UsuarioSaleBoton
 
         menu.Items.Add(menuItemMasApps)
+
+        Dim iconoDeals As New FontAwesome.UWP.FontAwesome With {
+            .Icon = FontAwesomeIcon.Cube
+        }
+
+        Dim menuItemDeals As New MenuFlyoutItem With {
+            .Text = "pepeizqdeals.com",
+            .Icon = iconoDeals
+        }
+
+        AddHandler menuItemDeals.Click, AddressOf MenuItemDealsClick
+        AddHandler menuItemDeals.PointerEntered, AddressOf UsuarioEntraBoton
+        AddHandler menuItemDeals.PointerExited, AddressOf UsuarioSaleBoton
+
+        menu.Items.Add(menuItemDeals)
+
+        menu.Items.Add(New MenuFlyoutSeparator)
+
+        Dim iconoVotar As New FontAwesome.UWP.FontAwesome With {
+            .Icon = FontAwesomeIcon.ThumbsOutlineUp
+        }
+
+        Dim menuItemVotar As New MenuFlyoutItem With {
+            .Text = recursos.GetString("MoreThings_VoteApp"),
+            .Icon = iconoVotar
+        }
+
+        AddHandler menuItemVotar.Click, AddressOf MenuItemVotarClick
+        AddHandler menuItemVotar.PointerEntered, AddressOf UsuarioEntraBoton
+        AddHandler menuItemVotar.PointerExited, AddressOf UsuarioSaleBoton
+
+        menu.Items.Add(menuItemVotar)
 
         Dim iconoContacto As New FontAwesome.UWP.FontAwesome With {
             .Icon = FontAwesomeIcon.CommentOutline
@@ -158,6 +174,12 @@ Module MasCosas
     Private Async Sub MenuItemMasAppsClick(sender As Object, e As RoutedEventArgs)
 
         Await Launcher.LaunchUriAsync(New Uri("https://pepeizqapps.com/"))
+
+    End Sub
+
+    Private Async Sub MenuItemDealsClick(sender As Object, e As RoutedEventArgs)
+
+        Await Launcher.LaunchUriAsync(New Uri("https://pepeizqdeals.com/"))
 
     End Sub
 

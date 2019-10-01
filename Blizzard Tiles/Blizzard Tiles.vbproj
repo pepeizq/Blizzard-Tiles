@@ -24,6 +24,8 @@
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppInstallerUpdateFrequency>1</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
+    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -115,6 +117,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Blizzard.vb" />
+    <Compile Include="Modulos\BlizzardBBDD.vb" />
     <Compile Include="Modulos\Configuracion.vb" />
     <Compile Include="Modulos\Decompiladores.vb" />
     <Compile Include="Modulos\MasCosas.vb" />
@@ -141,9 +144,6 @@
     <Content Include="Assets\Juegos\bo4.png" />
     <Content Include="Assets\Juegos\bo4m.jpg" />
     <Content Include="Assets\Juegos\bo4s.png" />
-    <Content Include="Assets\Juegos\de2.png" />
-    <Content Include="Assets\Juegos\de2m.jpg" />
-    <Content Include="Assets\Juegos\de2s.png" />
     <Content Include="Assets\Juegos\di3.jpg" />
     <Content Include="Assets\Juegos\di3m.jpg" />
     <Content Include="Assets\Juegos\di3s.png" />
@@ -153,6 +153,9 @@
     <Content Include="Assets\Juegos\her.jpg" />
     <Content Include="Assets\Juegos\herm.jpg" />
     <Content Include="Assets\Juegos\hers.png" />
+    <Content Include="Assets\Juegos\mws.png" />
+    <Content Include="Assets\Juegos\mwm.jpg" />
+    <Content Include="Assets\Juegos\mw.jpg" />
     <Content Include="Assets\Juegos\ove.png" />
     <Content Include="Assets\Juegos\ovem.jpg" />
     <Content Include="Assets\Juegos\oves.png" />
@@ -264,25 +267,25 @@
       <Version>4.7.0.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.0.5</Version>
+      <Version>6.2.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Services.Store.SDK">
       <Version>10.1705.16001</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp">
-      <Version>2.1.1</Version>
+      <Version>5.1.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications">
-      <Version>2.1.1</Version>
+      <Version>5.1.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI">
-      <Version>2.1.1</Version>
+      <Version>5.1.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Animations">
-      <Version>2.1.1</Version>
+      <Version>5.1.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
-      <Version>2.1.1</Version>
+      <Version>5.1.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

@@ -16,212 +16,90 @@ Module Blizzard
         Dim frame As Frame = Window.Current.Content
         Dim pagina As Page = frame.Content
 
-        Dim botonAñadirCarpetaTexto As TextBlock = pagina.FindName("botonAñadirCarpetaBlizzardTexto")
-
-        Dim botonCarpetaTexto As TextBlock = pagina.FindName("tbBlizzardConfigCarpeta")
-
         Dim gv As GridView = pagina.FindName("gridViewTilesBlizzard")
-
         gv.Items.Clear()
-
-        Dim carpeta As StorageFolder = Nothing
-
-        Try
-            If boolBuscarCarpeta = True Then
-                Dim carpetapicker As New FolderPicker()
-
-                carpetapicker.FileTypeFilter.Add("*")
-                carpetapicker.ViewMode = PickerViewMode.List
-
-                carpeta = Await carpetapicker.PickSingleFolderAsync()
-            Else
-                carpeta = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("BattlenetCarpeta")
-            End If
-        Catch ex As Exception
-
-        End Try
 
         Dim listaJuegos As New List(Of Tile)
 
-        If Not carpeta Is Nothing Then
-            Dim carpetasJuegos As IReadOnlyList(Of StorageFolder) = Await carpeta.GetFoldersAsync()
-            Dim detectadoBool As Boolean = False
+        If ApplicationData.Current.LocalSettings.Values("modo_tiles") = 0 Then
+            Dim juegosBBDD As List(Of BlizzardBBDDEntrada) = BlizzardBBDD.Listado
 
-            For Each carpetaJuego As StorageFolder In carpetasJuegos
-                Dim ficheros As IReadOnlyList(Of StorageFile) = Await carpetaJuego.GetFilesAsync()
+            For Each juegoBBDD In juegosBBDD
+                Dim titulo As String = juegoBBDD.Titulo
 
-                For Each fichero As StorageFile In ficheros
-                    Dim nombreFichero As String = fichero.DisplayName.ToLower
-
-                    If nombreFichero = "destiny2" And fichero.FileType = ".exe" Then
-                        detectadoBool = True
+                Dim tituloBool As Boolean = False
+                Dim i As Integer = 0
+                While i < listaJuegos.Count
+                    If listaJuegos(i).Titulo = titulo Then
+                        tituloBool = True
                     End If
+                    i += 1
+                End While
 
-                    If nombreFichero = "diablo iii" And fichero.FileType = ".exe" Then
-                        detectadoBool = True
-                    End If
-
-                    If nombreFichero = "hearthstone" And fichero.FileType = ".exe" Then
-                        detectadoBool = True
-                    End If
-
-                    If nombreFichero = "heroes of the storm" And fichero.FileType = ".exe" Then
-                        detectadoBool = True
-                    End If
-
-                    If nombreFichero = "overwatch" And fichero.FileType = ".exe" Then
-                        detectadoBool = True
-                    End If
-
-                    If nombreFichero = "starcraft" And fichero.FileType = ".exe" Then
-                        detectadoBool = True
-                    End If
-
-                    If nombreFichero = "starcraft ii" And fichero.FileType = ".exe" Then
-                        detectadoBool = True
-                    End If
-
-                    If nombreFichero = "sc2" And fichero.FileType = ".exe" Then
-                        detectadoBool = True
-                    End If
-
-                    If nombreFichero = "wow" And fichero.FileType = ".exe" Then
-                        detectadoBool = True
-                    End If
-
-                    If nombreFichero = "blackops4" And fichero.FileType = ".exe" Then
-                        detectadoBool = True
-                    End If
-                Next
+                If tituloBool = False Then
+                    Dim juego As New Tile(titulo, juegoBBDD.ID, "battlenet://" + juegoBBDD.ID, New Uri(juegoBBDD.ImagenPequeña), New Uri(juegoBBDD.ImagenMediana), New Uri(juegoBBDD.ImagenAncha), New Uri(juegoBBDD.ImagenMediana))
+                    listaJuegos.Add(juego)
+                End If
             Next
+        ElseIf ApplicationData.Current.LocalSettings.Values("modo_tiles") = 1 Then
+            Dim botonAñadirCarpetaTexto As TextBlock = pagina.FindName("botonAñadirCarpetaBlizzardTexto")
+            Dim botonCarpetaTexto As TextBlock = pagina.FindName("tbBlizzardConfigCarpeta")
+            Dim carpeta As StorageFolder = Nothing
 
-            If detectadoBool = True Then
-                StorageApplicationPermissions.FutureAccessList.AddOrReplace("BattlenetCarpeta", carpeta)
-                botonCarpetaTexto.Text = carpeta.Path
-                botonAñadirCarpetaTexto.Text = recursos.GetString("Change")
+            Try
+                If boolBuscarCarpeta = True Then
+                    Dim carpetapicker As New FolderPicker()
+
+                    carpetapicker.FileTypeFilter.Add("*")
+                    carpetapicker.ViewMode = PickerViewMode.List
+
+                    carpeta = Await carpetapicker.PickSingleFolderAsync()
+                Else
+                    carpeta = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("BattlenetCarpeta")
+                End If
+            Catch ex As Exception
+
+            End Try
+
+            If Not carpeta Is Nothing Then
+                Dim carpetasJuegos As IReadOnlyList(Of StorageFolder) = Await carpeta.GetFoldersAsync()
 
                 For Each carpetaJuego As StorageFolder In carpetasJuegos
                     Dim ficheros As IReadOnlyList(Of StorageFile) = Await carpetaJuego.GetFilesAsync()
+                    Dim juegosBBDD As List(Of BlizzardBBDDEntrada) = BlizzardBBDD.Listado
 
                     For Each fichero As StorageFile In ficheros
                         Dim nombreFichero As String = fichero.DisplayName.ToLower
 
-                        Dim ejecutable As String = Nothing
-                        Dim clave As String = Nothing
+                        For Each juegoBBDD In juegosBBDD
+                            For Each ejecutable In juegoBBDD.Ejecutables
+                                If ejecutable = nombreFichero And fichero.FileType = ".exe" Then
+                                    Dim titulo As String = juegoBBDD.Titulo
 
-                        Dim imagenPequeña As String = Nothing
-                        Dim imagenMediana As String = Nothing
-                        Dim imagenAncha As String = Nothing
+                                    Dim tituloBool As Boolean = False
+                                    Dim i As Integer = 0
+                                    While i < listaJuegos.Count
+                                        If listaJuegos(i).Titulo = titulo Then
+                                            tituloBool = True
+                                        End If
+                                        i += 1
+                                    End While
 
-                        If nombreFichero = "destiny2" And fichero.FileType = ".exe" Then
-                            ejecutable = "battlenet://DST2"
-                            clave = "DST2"
-
-                            imagenPequeña = "ms-appx:///Assets/Juegos/de2s.png"
-                            imagenMediana = "ms-appx:///Assets/Juegos/de2m.jpg"
-                            imagenAncha = "ms-appx:///Assets/Juegos/de2.png"
-                        End If
-
-                        If nombreFichero = "diablo iii" And fichero.FileType = ".exe" Then
-                            ejecutable = "battlenet://D3"
-                            clave = "D3"
-
-                            imagenPequeña = "ms-appx:///Assets/Juegos/di3s.png"
-                            imagenMediana = "ms-appx:///Assets/Juegos/di3m.jpg"
-                            imagenAncha = "ms-appx:///Assets/Juegos/di3.jpg"
-                        End If
-
-                        If nombreFichero = "hearthstone" And fichero.FileType = ".exe" Then
-                            ejecutable = "battlenet://WTCG"
-                            clave = "WTCG"
-
-                            imagenPequeña = "ms-appx:///Assets/Juegos/heas.png"
-                            imagenMediana = "ms-appx:///Assets/Juegos/heam.jpg"
-                            imagenAncha = "ms-appx:///Assets/Juegos/hea.jpg"
-                        End If
-
-                        If nombreFichero = "heroes of the storm" And fichero.FileType = ".exe" Then
-                            ejecutable = "battlenet://Hero"
-                            clave = "Hero"
-
-                            imagenPequeña = "ms-appx:///Assets/Juegos/hers.png"
-                            imagenMediana = "ms-appx:///Assets/Juegos/herm.jpg"
-                            imagenAncha = "ms-appx:///Assets/Juegos/her.jpg"
-                        End If
-
-                        If nombreFichero = "overwatch" And fichero.FileType = ".exe" Then
-                            ejecutable = "battlenet://Pro"
-                            clave = "Pro"
-
-                            imagenPequeña = "ms-appx:///Assets/Juegos/oves.png"
-                            imagenMediana = "ms-appx:///Assets/Juegos/ovem.jpg"
-                            imagenAncha = "ms-appx:///Assets/Juegos/ove.png"
-                        End If
-
-                        If nombreFichero = "starcraft" And fichero.FileType = ".exe" Then
-                            ejecutable = "battlenet://S1"
-                            clave = "S1"
-
-                            imagenPequeña = "ms-appx:///Assets/Juegos/sc1s.png"
-                            imagenMediana = "ms-appx:///Assets/Juegos/sc1m.jpg"
-                            imagenAncha = "ms-appx:///Assets/Juegos/sc1.jpg"
-                        End If
-
-                        If nombreFichero = "sc2" And fichero.FileType = ".exe" Then
-                            ejecutable = "battlenet://S2"
-                            clave = "S2"
-
-                            imagenPequeña = "ms-appx:///Assets/Juegos/sc2s.png"
-                            imagenMediana = "ms-appx:///Assets/Juegos/sc2m.jpg"
-                            imagenAncha = "ms-appx:///Assets/Juegos/sc2.jpg"
-                        End If
-
-                        If nombreFichero = "starcraft ii" And fichero.FileType = ".exe" Then
-                            ejecutable = "battlenet://S2"
-                            clave = "S2"
-
-                            imagenPequeña = "ms-appx:///Assets/Juegos/sc2s.png"
-                            imagenMediana = "ms-appx:///Assets/Juegos/sc2m.jpg"
-                            imagenAncha = "ms-appx:///Assets/Juegos/sc2.jpg"
-                        End If
-
-                        If nombreFichero = "wow" And fichero.FileType = ".exe" Then
-                            ejecutable = "battlenet://WoW"
-                            clave = "WoW"
-
-                            imagenPequeña = "ms-appx:///Assets/Juegos/wows.png"
-                            imagenMediana = "ms-appx:///Assets/Juegos/wowm.jpg"
-                            imagenAncha = "ms-appx:///Assets/Juegos/wow.jpg"
-                        End If
-
-                        If nombreFichero = "blackops4" And fichero.FileType = ".exe" Then
-                            ejecutable = "battlenet://VIPR"
-                            clave = "VIPR"
-
-                            imagenPequeña = "ms-appx:///Assets/Juegos/bo4s.png"
-                            imagenMediana = "ms-appx:///Assets/Juegos/bo4m.jpg"
-                            imagenAncha = "ms-appx:///Assets/Juegos/bo4.png"
-                        End If
-
-                        If Not ejecutable = Nothing Then
-                            Dim titulo As String = carpetaJuego.Name
-
-                            Dim tituloBool As Boolean = False
-                            Dim i As Integer = 0
-                            While i < listaJuegos.Count
-                                If listaJuegos(i).Titulo = titulo Then
-                                    tituloBool = True
+                                    If tituloBool = False Then
+                                        Dim juego As New Tile(titulo, juegoBBDD.ID, "battlenet://" + juegoBBDD.ID, New Uri(juegoBBDD.ImagenPequeña), New Uri(juegoBBDD.ImagenMediana), New Uri(juegoBBDD.ImagenAncha), New Uri(juegoBBDD.ImagenMediana))
+                                        listaJuegos.Add(juego)
+                                    End If
                                 End If
-                                i += 1
-                            End While
-
-                            If tituloBool = False Then
-                                Dim juego As New Tile(titulo, clave, ejecutable, New Uri(imagenPequeña), New Uri(imagenMediana), New Uri(imagenAncha), New Uri(imagenMediana))
-                                listaJuegos.Add(juego)
-                            End If
-                        End If
+                            Next
+                        Next
                     Next
                 Next
+            End If
+
+            If listaJuegos.Count > 0 Then
+                StorageApplicationPermissions.FutureAccessList.AddOrReplace("BattlenetCarpeta", carpeta)
+                botonCarpetaTexto.Text = carpeta.Path
+                botonAñadirCarpetaTexto.Text = recursos.GetString("Change")
             End If
         End If
 
@@ -275,9 +153,9 @@ Module Blizzard
                 gv.Items.Add(boton)
             Next
 
-            If boolBuscarCarpeta = True Then
-                Toast(listaJuegos.Count.ToString + " " + recursos.GetString("GamesDetected"), Nothing)
-            End If
+            'If boolBuscarCarpeta = True Then
+            '    Toast(listaJuegos.Count.ToString + " " + recursos.GetString("GamesDetected"), Nothing)
+            'End If
         Else
             panelNoJuegos.Visibility = Visibility.Visible
             gridSeleccionar.Visibility = Visibility.Collapsed

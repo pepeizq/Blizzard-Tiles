@@ -830,8 +830,8 @@
 
                 <Grid x:Name="gridConfig" Visibility="Collapsed">
                     <ScrollViewer>
-                        <StackPanel Orientation="Vertical" Width="700" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <StackPanel Orientation="Vertical" Margin="40,20" BorderBrush="{StaticResource BrushSecundario}" BorderThickness="1">
+                        <controls:DropShadowPanel MinWidth="700" MaxWidth="1000" Color="Black" ShadowOpacity="0.9" BlurRadius="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <StackPanel Orientation="Vertical" BorderBrush="{StaticResource BrushSecundario}" BorderThickness="1">
                                 <StackPanel.Background>
                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                         <GradientStop Color="#FFE4E4E4" Offset="0.5" />
@@ -839,24 +839,30 @@
                                     </LinearGradientBrush>
                                 </StackPanel.Background>
 
-                                <Grid x:Name="gridConfigTiles" HorizontalAlignment="Stretch" Padding="10" Background="{StaticResource GridTituloBackground}">
-                                    <TextBlock Text="Tiles" FontSize="16" Foreground="White" Margin="5,0,0,0"/>
+                                <Grid x:Name="gridConfigTiles" HorizontalAlignment="Stretch" Padding="20,10" Background="{StaticResource GridTituloBackground}">
+                                    <TextBlock Text="Tiles" FontSize="16" Foreground="White"/>
                                 </Grid>
 
-                                <StackPanel Orientation="Vertical" Padding="15">
-                                    <TextBlock x:Uid="ConfigFolderMessage" TextWrapping="Wrap"/>
+                                <StackPanel Orientation="Vertical" Padding="20">
+                                    <CheckBox x:Name="cbModoTile1" x:Uid="ConfigTileMode1"/>
 
-                                    <Button x:Name="botonAñadirCarpetaBlizzard" Padding="10" Margin="0,10" Background="{StaticResource BrushSecundario}" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton">
-                                        <StackPanel Orientation="Horizontal">
-                                            <fa:FontAwesome Icon="Folder" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
-                                            <TextBlock x:Name="botonAñadirCarpetaBlizzardTexto" x:Uid="ConfigAddFolder" Foreground="White"/>
-                                        </StackPanel>
-                                    </Button>
+                                    <CheckBox x:Name="cbModoTile2" x:Uid="ConfigTileMode2" Margin="0,10,0,0"/>
+                                    
+                                    <StackPanel x:Name="spModoTile2" Margin="0,10,0,0" Visibility="Collapsed">
+                                        <TextBlock x:Uid="ConfigFolderMessage" TextWrapping="Wrap"/>
 
-                                    <TextBlock x:Name="tbBlizzardConfigCarpeta" VerticalAlignment="Center"/>
+                                        <Button x:Name="botonAñadirCarpetaBlizzard" Padding="10" Margin="0,10" Background="{StaticResource BrushSecundario}" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton">
+                                            <StackPanel Orientation="Horizontal">
+                                                <fa:FontAwesome Icon="Folder" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                                <TextBlock x:Name="botonAñadirCarpetaBlizzardTexto" x:Uid="ConfigAddFolder" Foreground="White"/>
+                                            </StackPanel>
+                                        </Button>
+
+                                        <TextBlock x:Name="tbBlizzardConfigCarpeta" VerticalAlignment="Center"/>
+                                    </StackPanel>
                                 </StackPanel>
                             </StackPanel>
-                        </StackPanel> 
+                        </controls:DropShadowPanel>
                     </ScrollViewer> 
                 </Grid>
             </Grid> 

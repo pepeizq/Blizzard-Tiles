@@ -258,4 +258,10 @@
   <data name="TileWide.Text" xml:space="preserve">
     <value>Wide Tile</value>
   </data>
+  <data name="ConfigTileMode1.Content" xml:space="preserve">
+    <value>Show All Games</value>
+  </data>
+  <data name="ConfigTileMode2.Content" xml:space="preserve">
+    <value>Show Installed Games</value>
+  </data>
 </root>
