@@ -48,11 +48,11 @@ Module MasCosas
         menu.Placement = FlyoutPlacementMode.Top
 
         Dim iconoMasApps As New FontAwesome.UWP.FontAwesome With {
-            .Icon = FontAwesomeIcon.PlusCircle
+            .Icon = FontAwesomeIcon.Cube
         }
 
         Dim menuItemMasApps As New MenuFlyoutItem With {
-            .Text = recursos.GetString("MoreThings_MoreApps"),
+            .Text = "pepeizqapps.com",
             .Icon = iconoMasApps
         }
 
