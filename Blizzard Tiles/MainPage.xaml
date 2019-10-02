@@ -847,7 +847,7 @@
 
                                 <CheckBox x:Name="cbModoTile2" x:Uid="ConfigTileMode2" Margin="0,10,0,0"/>
 
-                                <StackPanel x:Name="spModoTile2" Margin="0,10,0,0" Visibility="Collapsed">
+                                <StackPanel x:Name="spModoTile2" Margin="28,10,0,0" Visibility="Collapsed">
                                     <TextBlock x:Uid="ConfigFolderMessage" TextWrapping="Wrap"/>
 
                                     <Button x:Name="botonAñadirCarpetaBlizzard" Padding="10" Margin="0,10" Background="{StaticResource BrushSecundario}" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton">

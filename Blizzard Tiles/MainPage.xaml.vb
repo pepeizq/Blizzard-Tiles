@@ -469,9 +469,21 @@ Public NotInheritable Class MainPage
 
     End Sub
 
+    Private Sub CbModoTile1_Unchecked(sender As Object, e As RoutedEventArgs) Handles cbModoTile1.Unchecked
+
+        Configuracion.ModoTiles(1)
+
+    End Sub
+
     Private Sub CbModoTile2_Checked(sender As Object, e As RoutedEventArgs) Handles cbModoTile2.Checked
 
         Configuracion.ModoTiles(1)
+
+    End Sub
+
+    Private Sub CbModoTile2_Unchecked(sender As Object, e As RoutedEventArgs) Handles cbModoTile2.Unchecked
+
+        Configuracion.ModoTiles(0)
 
     End Sub
 
