@@ -463,27 +463,9 @@ Public NotInheritable Class MainPage
 
     'CONFIG-----------------------------------------------------------------------------
 
-    Private Sub CbModoTile1_Checked(sender As Object, e As RoutedEventArgs) Handles cbModoTile1.Checked
+    Private Sub CbConfigModosTiles_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles cbConfigModosTiles.SelectionChanged
 
-        Configuracion.ModoTiles(0)
-
-    End Sub
-
-    Private Sub CbModoTile1_Unchecked(sender As Object, e As RoutedEventArgs) Handles cbModoTile1.Unchecked
-
-        Configuracion.ModoTiles(1)
-
-    End Sub
-
-    Private Sub CbModoTile2_Checked(sender As Object, e As RoutedEventArgs) Handles cbModoTile2.Checked
-
-        Configuracion.ModoTiles(1)
-
-    End Sub
-
-    Private Sub CbModoTile2_Unchecked(sender As Object, e As RoutedEventArgs) Handles cbModoTile2.Unchecked
-
-        Configuracion.ModoTiles(0)
+        Configuracion.ModoTiles(cbConfigModosTiles.SelectedIndex, False)
 
     End Sub
 

@@ -10,9 +10,9 @@ Module Configuracion
     Public Sub Iniciar()
 
         If ApplicationData.Current.LocalSettings.Values("modo_tiles") Is Nothing Then
-            ModoTiles(0)
+            ModoTiles(0, True)
         Else
-            ModoTiles(ApplicationData.Current.LocalSettings.Values("modo_tiles"))
+            ModoTiles(ApplicationData.Current.LocalSettings.Values("modo_tiles"), True)
         End If
 
         '------------------------------------------
@@ -221,33 +221,27 @@ Module Configuracion
 
     End Sub
 
-    Public Sub ModoTiles(modo As Integer)
-
-        ApplicationData.Current.LocalSettings.Values("modo_tiles") = modo
+    Public Sub ModoTiles(modo As Integer, arranque As Boolean)
 
         Dim frame As Frame = Window.Current.Content
         Dim pagina As Page = frame.Content
 
-        Dim cb1 As CheckBox = pagina.FindName("cbModoTile1")
-        Dim cb2 As CheckBox = pagina.FindName("cbModoTile2")
+        ApplicationData.Current.LocalSettings.Values("modo_tiles") = modo
 
-        If modo = 0 Then
-            cb1.IsChecked = True
-            cb2.IsChecked = False
-        ElseIf modo = 1 Then
-            cb1.IsChecked = False
-            cb2.IsChecked = True
+        If arranque = True Then
+            Dim cbTiles As ComboBox = pagina.FindName("cbConfigModosTiles")
+            cbTiles.SelectedIndex = modo
+        Else
+            Blizzard.Generar(False)
         End If
 
         Dim sp2 As StackPanel = pagina.FindName("spModoTile2")
 
-        If cb2.IsChecked = True Then
+        If modo = 1 Then
             sp2.Visibility = Visibility.Visible
         Else
             sp2.Visibility = Visibility.Collapsed
         End If
-
-        Blizzard.Generar(False)
 
     End Sub
 

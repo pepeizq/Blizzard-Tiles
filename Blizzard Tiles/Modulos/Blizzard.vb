@@ -16,6 +16,12 @@ Module Blizzard
         Dim frame As Frame = Window.Current.Content
         Dim pagina As Page = frame.Content
 
+        Dim cbTiles As ComboBox = pagina.FindName("cbConfigModosTiles")
+        cbTiles.IsEnabled = False
+
+        Dim sp2 As StackPanel = pagina.FindName("spModoTile2")
+        sp2.IsHitTestVisible = False
+
         Dim gv As GridView = pagina.FindName("gridViewTilesBlizzard")
         gv.Items.Clear()
 
@@ -162,6 +168,9 @@ Module Blizzard
 
             gv.Visibility = Visibility.Collapsed
         End If
+
+        cbTiles.IsEnabled = True
+        sp2.IsHitTestVisible = True
 
     End Sub
 
