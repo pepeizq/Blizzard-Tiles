@@ -10,7 +10,9 @@
             New BlizzardBBDDEntrada("Overwatch", "Pro", New List(Of String) From {"overwatch", "overwatch launcher"}, "ms-appx:///Assets/Juegos/oves.png", "ms-appx:///Assets/Juegos/ovem.jpg", "ms-appx:///Assets/Juegos/ove.png"),
             New BlizzardBBDDEntrada("StarCraft", "S1", New List(Of String) From {"starcraft"}, "ms-appx:///Assets/Juegos/sc1s.png", "ms-appx:///Assets/Juegos/sc1m.jpg", "ms-appx:///Assets/Juegos/sc1.jpg"),
             New BlizzardBBDDEntrada("StarCraft II", "S2", New List(Of String) From {"starcraft ii", "sc2"}, "ms-appx:///Assets/Juegos/sc2s.png", "ms-appx:///Assets/Juegos/sc2m.jpg", "ms-appx:///Assets/Juegos/sc2.jpg"),
-            New BlizzardBBDDEntrada("World of Warcraft", "WoW", New List(Of String) From {"wow", "wow launcher"}, "ms-appx:///Assets/Juegos/wows.png", "ms-appx:///Assets/Juegos/wowm.jpg", "ms-appx:///Assets/Juegos/wow.jpg")
+            New BlizzardBBDDEntrada("Warcraft III: Reforged", "W3", New List(Of String) From {"w3"}, "ms-appx:///Assets/Juegos/w3s.png", "ms-appx:///Assets/Juegos/w3m.jpg", "ms-appx:///Assets/Juegos/w3.jpg"),
+            New BlizzardBBDDEntrada("World of Warcraft", "WoW", New List(Of String) From {"wow", "wow launcher"}, "ms-appx:///Assets/Juegos/wows.png", "ms-appx:///Assets/Juegos/wowm.jpg", "ms-appx:///Assets/Juegos/wow.jpg"),
+            New BlizzardBBDDEntrada("World of Warcraft Classic", "wow_classic", New List(Of String) From {"wow", "wow launcher"}, "ms-appx:///Assets/Juegos/wows.png", "ms-appx:///Assets/Juegos/wowcm.jpg", "ms-appx:///Assets/Juegos/wowc.jpg")
         }
 
         Return lista
