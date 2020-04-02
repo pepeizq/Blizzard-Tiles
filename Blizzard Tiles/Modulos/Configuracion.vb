@@ -38,6 +38,9 @@ Module Configuracion
             sp2.Visibility = Visibility.Visible
         Else
             sp2.Visibility = Visibility.Collapsed
+
+            Dim gvTiles As GridView = pagina.FindName("gvTiles")
+            gvTiles.Visibility = Visibility.Visible
         End If
 
     End Sub
