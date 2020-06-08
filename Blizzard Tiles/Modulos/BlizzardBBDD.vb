@@ -4,6 +4,7 @@
         Dim lista As New List(Of BlizzardBBDDEntrada) From {
             New BlizzardBBDDEntrada("Call of Duty: Black Ops 4", "VIPR", New List(Of String) From {"blackops4"}, "ms-appx:///Assets/Juegos/bo4s.png", "ms-appx:///Assets/Juegos/bo4m.jpg", "ms-appx:///Assets/Juegos/bo4.png"),
             New BlizzardBBDDEntrada("Call of Duty: Modern Warfare", "ODIN", New List(Of String) From {"modernwarfare"}, "ms-appx:///Assets/Juegos/mws.png", "ms-appx:///Assets/Juegos/mwm.jpg", "ms-appx:///Assets/Juegos/mw.jpg"),
+            New BlizzardBBDDEntrada("Call of Duty: Modern Warfare 2 Remastered", "LAZR", New List(Of String) From {"modernwarfare"}, "ms-appx:///Assets/Juegos/mw2s.png", "ms-appx:///Assets/Juegos/mw2m.jpg", "ms-appx:///Assets/Juegos/mw2.png"),
             New BlizzardBBDDEntrada("Diablo III", "D3", New List(Of String) From {"diablo iii", "diablo iii launcher"}, "ms-appx:///Assets/Juegos/di3s.png", "ms-appx:///Assets/Juegos/di3m.jpg", "ms-appx:///Assets/Juegos/di3.jpg"),
             New BlizzardBBDDEntrada("Hearthstone", "WTCG", New List(Of String) From {"hearthstone"}, "ms-appx:///Assets/Juegos/heas.png", "ms-appx:///Assets/Juegos/heam.jpg", "ms-appx:///Assets/Juegos/hea.jpg"),
             New BlizzardBBDDEntrada("Heroes of the Storm", "Hero", New List(Of String) From {"heroes of the storm"}, "ms-appx:///Assets/Juegos/hers.png", "ms-appx:///Assets/Juegos/herm.jpg", "ms-appx:///Assets/Juegos/her.jpg"),

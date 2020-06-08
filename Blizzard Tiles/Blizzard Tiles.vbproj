@@ -150,6 +150,9 @@
     <Content Include="Assets\Iconos\1.png" />
     <Content Include="Assets\Iconos\2.png" />
     <Content Include="Assets\Iconos\3.png" />
+    <Content Include="Assets\Juegos\mw2s.png" />
+    <Content Include="Assets\Juegos\mw2.png" />
+    <Content Include="Assets\Juegos\mw2m.jpg" />
     <Content Include="Assets\Juegos\w3m.jpg" />
     <Content Include="Assets\Juegos\w3.jpg" />
     <Content Include="Assets\Juegos\bo4.png" />
