@@ -145,7 +145,7 @@
     <value>Report a Bug</value>
   </data>
   <data name="SelectGame.Text" xml:space="preserve">
-    <value>Select a game (you must have the game in the Blizzard App)</value>
+    <value>Select a game (you must have the game in the Battle.net App)</value>
   </data>
   <data name="MoreThings_SourceCode" xml:space="preserve">
     <value>Source Code</value>
@@ -159,11 +159,8 @@
   <data name="Change" xml:space="preserve">
     <value>Change Folder</value>
   </data>
-  <data name="ConfigFolderMessage.Text" xml:space="preserve">
-    <value>Add the folder where are installed your Blizzard games:</value>
-  </data>
   <data name="StoreDescription" xml:space="preserve">
-    <value>Pin Tiles in the Start Menu of Windows 10 for your Blizzard games.</value>
+    <value>Pin Tiles in the Start Menu of Windows 10 for your Battle.net games.</value>
   </data>
   <data name="GameSelectedTiles.Text" xml:space="preserve">
     <value>Images to include in the Tile of this game:</value>
@@ -182,15 +179,6 @@
   </data>
   <data name="Reset.Text" xml:space="preserve">
     <value>Reset</value>
-  </data>
-  <data name="ConfigTileMode1.Content" xml:space="preserve">
-    <value>Show All Games</value>
-  </data>
-  <data name="ConfigTileMode2.Content" xml:space="preserve">
-    <value>Show Installed Games</value>
-  </data>
-  <data name="ConfigAddFolder.Text" xml:space="preserve">
-    <value>Add Folder</value>
   </data>
   <data name="Options.Text" xml:space="preserve">
     <value>Options</value>
@@ -278,5 +266,8 @@
   </data>
   <data name="CacheMode2.Text" xml:space="preserve">
     <value>If you activate this mode, the app will download each necessary image of the game to your hard disk to add Tiles.</value>
+  </data>
+  <data name="OptionsLogo.Content" xml:space="preserve">
+    <value>Show Game Logo</value>
   </data>
 </root>

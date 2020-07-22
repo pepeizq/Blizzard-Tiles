@@ -246,6 +246,9 @@ Module Blizzard
         Dim frame As Frame = Window.Current.Content
         Dim pagina As Page = frame.Content
 
+        Dim spBuscador As StackPanel = pagina.FindName("spBuscador")
+        spBuscador.Visibility = Visibility.Collapsed
+
         Dim botonJuego As Button = e.OriginalSource
         Dim juego As Tile = botonJuego.Tag
 
@@ -253,7 +256,12 @@ Module Blizzard
         botonAñadirTile.Tag = juego
 
         Dim imagenJuegoSeleccionado As ImageEx = pagina.FindName("imagenJuegoSeleccionado")
-        imagenJuegoSeleccionado.Source = New BitmapImage(New Uri(juego.ImagenMediana))
+
+        If Not juego.ImagenMediana = String.Empty Then
+            imagenJuegoSeleccionado.Source = New BitmapImage(New Uri(juego.ImagenMediana))
+        Else
+            imagenJuegoSeleccionado.Source = Nothing
+        End If
 
         Dim tbJuegoSeleccionado As TextBlock = pagina.FindName("tbJuegoSeleccionado")
         tbJuegoSeleccionado.Text = juego.Titulo
@@ -295,6 +303,15 @@ Module Blizzard
         Dim imagenAncha As ImageEx = pagina.FindName("imagenTileAncha")
         imagenAncha.Source = Nothing
 
+        Dim imagenAnchaLogo As ImageEx = pagina.FindName("imagenTileAnchaLogo")
+        imagenAnchaLogo.Source = Nothing
+
+        Dim imagenGrande As ImageEx = pagina.FindName("imagenTileGrande")
+        imagenGrande.Source = Nothing
+
+        Dim imagenGrandeLogo As ImageEx = pagina.FindName("imagenTileGrandeLogo")
+        imagenGrandeLogo.Source = Nothing
+
         If Not juego.ImagenPequeña Is Nothing Then
             imagenPequeña.Source = juego.ImagenPequeña
             imagenPequeña.Tag = juego.ImagenPequeña
@@ -306,13 +323,23 @@ Module Blizzard
         End If
 
         If Not juego.ImagenAncha = Nothing Then
+            If Not juego.ImagenLogo = Nothing Then
+                imagenAnchaLogo.Source = juego.ImagenLogo
+                imagenAnchaLogo.Visibility = Visibility.Visible
+                imagenAnchaLogo.Tag = juego.ImagenLogo
+            End If
+
             imagenAncha.Source = juego.ImagenAncha
             imagenAncha.Tag = juego.ImagenAncha
         End If
 
-        Dim imagenGrande As ImageEx = pagina.FindName("imagenTileGrande")
-
         If Not juego.ImagenGrande = Nothing Then
+            If Not juego.ImagenLogo = Nothing Then
+                imagenGrandeLogo.Source = juego.ImagenLogo
+                imagenGrandeLogo.Visibility = Visibility.Visible
+                imagenGrandeLogo.Tag = juego.ImagenLogo
+            End If
+
             imagenGrande.Source = juego.ImagenGrande
             imagenGrande.Tag = juego.ImagenGrande
         End If

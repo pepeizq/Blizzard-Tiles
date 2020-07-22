@@ -148,7 +148,7 @@
     <value>Informa de un Fallo</value>
   </data>
   <data name="SelectGame.Text" xml:space="preserve">
-    <value>Selecciona un juego (debes de tener el juego en la app de Blizzard)</value>
+    <value>Selecciona un juego (debes de tener el juego en la app de Battle.net)</value>
   </data>
   <data name="MoreThings_SourceCode" xml:space="preserve">
     <value>Código Fuente</value>
@@ -162,11 +162,8 @@
   <data name="Change" xml:space="preserve">
     <value>Cambiar Carpeta</value>
   </data>
-  <data name="ConfigFolderMessage.Text" xml:space="preserve">
-    <value>Añade la carpeta donde están instalados tus juegos de Blizzard:</value>
-  </data>
   <data name="StoreDescription" xml:space="preserve">
-    <value>Añade Tiles para tus juegos de la aplicación de Blizzard en el menú de Inicio de Windows 10.</value>
+    <value>Añade Tiles para tus juegos de la aplicación de Battle.net en el menú de Inicio de Windows 10.</value>
   </data>
   <data name="StoreTags" xml:space="preserve">
     <value>Battle.net;Blizzard;Tiles;Warcraft;Starcraft;Overwatch;Diablo</value>
@@ -182,15 +179,6 @@
   </data>
   <data name="Reset.Text" xml:space="preserve">
     <value>Reset</value>
-  </data>
-  <data name="ConfigTileMode1.Content" xml:space="preserve">
-    <value>Enseñar Todos los Juegos</value>
-  </data>
-  <data name="ConfigTileMode2.Content" xml:space="preserve">
-    <value>Enseñar los Juegos Instalados</value>
-  </data>
-  <data name="ConfigAddFolder.Text" xml:space="preserve">
-    <value>Añadir Carpeta</value>
   </data>
   <data name="Options.Text" xml:space="preserve">
     <value>Opciones</value>
@@ -278,5 +266,8 @@
   </data>
   <data name="CacheMode2.Text" xml:space="preserve">
     <value>Si activas este modo, la app descarga en tu disco duro cada imagen necesaria del juego para añadir Tiles.</value>
+  </data>
+  <data name="OptionsLogo.Content" xml:space="preserve">
+    <value>Enseñar Logo del Juego</value>
   </data>
 </root>

@@ -87,8 +87,8 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Border Grid.Column="0" BorderThickness="1" BorderBrush="{StaticResource BrushPrimario}" Width="100" Height="100" VerticalAlignment="Center">
-                                    <controls:ImageEx x:Name="imagenJuegoSeleccionado" Stretch="UniformToFill" IsCacheEnabled="True"/>
+                                <Border Grid.Column="0" Width="200" Height="70" VerticalAlignment="Center">
+                                    <controls:ImageEx x:Name="imagenJuegoSeleccionado" Stretch="Uniform" IsCacheEnabled="True"/>
                                 </Border>
 
                                 <TextBlock x:Name="tbJuegoSeleccionado" Grid.Column="1" VerticalAlignment="Center" Margin="20,0" TextWrapping="Wrap" Foreground="White" FontSize="18"/>
@@ -199,6 +199,7 @@
                                         <controls:DropShadowPanel ShadowOpacity="0.9" BlurRadius="5">
                                             <Grid x:Name="gridTileAncha" Background="{StaticResource BrushTercero}" Width="310" Height="150">
                                                 <controls:ImageEx x:Name="imagenTileAncha" IsCacheEnabled="True" Stretch="UniformToFill"/>
+                                                <controls:ImageEx x:Name="imagenTileAnchaLogo" IsCacheEnabled="True" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20" MaxWidth="120"/>
                                             </Grid>
                                         </controls:DropShadowPanel>
                                     </Button.Content>
@@ -220,7 +221,8 @@
                                     <Button.Content>
                                         <controls:DropShadowPanel ShadowOpacity="0.9" BlurRadius="5">
                                             <Grid x:Name="gridTileGrande" Background="{StaticResource BrushTercero}" Width="310" Height="310">
-                                                <controls:ImageEx x:Name="imagenTileGrande" IsCacheEnabled="True" Stretch="Uniform"/>
+                                                <controls:ImageEx x:Name="imagenTileGrande" IsCacheEnabled="True" Stretch="Uniformtofill"/>
+                                                <controls:ImageEx x:Name="imagenTileGrandeLogo" IsCacheEnabled="True" Stretch="Uniform" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="30"/>
                                             </Grid>
                                         </controls:DropShadowPanel>
                                     </Button.Content>
@@ -373,6 +375,10 @@
                                                         </Grid>
                                                     </ToolTipService.ToolTip>
                                                 </fa:FontAwesome>
+                                            </Grid>
+
+                                            <Grid x:Name="gridPersonalizacionImagenLogo" HorizontalAlignment="Center" Margin="0,20,0,0">
+                                                <CheckBox x:Name="cbPersonalizacionImagenLogo" x:Uid="OptionsLogo" VerticalAlignment="Center" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton"/>
                                             </Grid>
                                         </StackPanel>
                                     </controls:TabViewItem>
