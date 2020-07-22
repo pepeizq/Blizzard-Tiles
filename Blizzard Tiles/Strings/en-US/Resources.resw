@@ -145,7 +145,7 @@
     <value>Report a Bug</value>
   </data>
   <data name="SelectGame.Text" xml:space="preserve">
-    <value>Select a game</value>
+    <value>Select a game (you must have the game in the Blizzard App)</value>
   </data>
   <data name="MoreThings_SourceCode" xml:space="preserve">
     <value>Source Code</value>
@@ -272,5 +272,11 @@
   </data>
   <data name="GamePersonalizationInfo.Text" xml:space="preserve">
     <value>Click on the image to customize it before adding the Tile</value>
+  </data>
+  <data name="CacheMode.Text" xml:space="preserve">
+    <value>Cache Mode</value>
+  </data>
+  <data name="CacheMode2.Text" xml:space="preserve">
+    <value>If you activate this mode, the app will download each necessary image of the game to your hard disk to add Tiles.</value>
   </data>
 </root>

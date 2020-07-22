@@ -120,6 +120,7 @@
     </Compile>
     <Compile Include="Modulos\Blizzard.vb" />
     <Compile Include="Modulos\BlizzardBBDD.vb" />
+    <Compile Include="Modulos\Cache.vb" />
     <Compile Include="Modulos\Configuracion.vb" />
     <Compile Include="Modulos\Decompiladores.vb" />
     <Compile Include="Modulos\MasCosas.vb" />
@@ -150,41 +151,6 @@
     <Content Include="Assets\Iconos\1.png" />
     <Content Include="Assets\Iconos\2.png" />
     <Content Include="Assets\Iconos\3.png" />
-    <Content Include="Assets\Juegos\mw2s.png" />
-    <Content Include="Assets\Juegos\mw2.png" />
-    <Content Include="Assets\Juegos\mw2m.jpg" />
-    <Content Include="Assets\Juegos\w3m.jpg" />
-    <Content Include="Assets\Juegos\w3.jpg" />
-    <Content Include="Assets\Juegos\bo4.png" />
-    <Content Include="Assets\Juegos\bo4m.jpg" />
-    <Content Include="Assets\Juegos\bo4s.png" />
-    <Content Include="Assets\Juegos\di3.jpg" />
-    <Content Include="Assets\Juegos\di3m.jpg" />
-    <Content Include="Assets\Juegos\di3s.png" />
-    <Content Include="Assets\Juegos\hea.jpg" />
-    <Content Include="Assets\Juegos\heam.jpg" />
-    <Content Include="Assets\Juegos\heas.png" />
-    <Content Include="Assets\Juegos\her.jpg" />
-    <Content Include="Assets\Juegos\herm.jpg" />
-    <Content Include="Assets\Juegos\hers.png" />
-    <Content Include="Assets\Juegos\mws.png" />
-    <Content Include="Assets\Juegos\mwm.jpg" />
-    <Content Include="Assets\Juegos\mw.jpg" />
-    <Content Include="Assets\Juegos\ove.png" />
-    <Content Include="Assets\Juegos\ovem.jpg" />
-    <Content Include="Assets\Juegos\oves.png" />
-    <Content Include="Assets\Juegos\sc1.jpg" />
-    <Content Include="Assets\Juegos\sc1m.jpg" />
-    <Content Include="Assets\Juegos\sc1s.png" />
-    <Content Include="Assets\Juegos\sc2.jpg" />
-    <Content Include="Assets\Juegos\sc2m.jpg" />
-    <Content Include="Assets\Juegos\sc2s.png" />
-    <Content Include="Assets\Juegos\w3s.png" />
-    <Content Include="Assets\Juegos\wowc.jpg" />
-    <Content Include="Assets\Juegos\wow.jpg" />
-    <Content Include="Assets\Juegos\wowcm.jpg" />
-    <Content Include="Assets\Juegos\wowm.jpg" />
-    <Content Include="Assets\Juegos\wows.png" />
     <Content Include="Assets\Logos\BadgeLogo.scale-100.png" />
     <Content Include="Assets\Logos\BadgeLogo.scale-125.png" />
     <Content Include="Assets\Logos\BadgeLogo.scale-150.png" />
@@ -304,6 +270,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
       <Version>5.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
