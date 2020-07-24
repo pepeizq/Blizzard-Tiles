@@ -29,8 +29,7 @@ Module Blizzard
         Dim tbProgreso As TextBlock = pagina.FindName("tbProgreso")
         tbProgreso.Text = String.Empty
 
-        Dim botonCache As Button = pagina.FindName("botonConfigLimpiarCache")
-        botonCache.IsEnabled = False
+        Cache.Estado(False)
 
         Dim gridSeleccionarJuego As Grid = pagina.FindName("gridSeleccionarJuego")
         gridSeleccionarJuego.Visibility = Visibility.Collapsed
@@ -173,7 +172,7 @@ Module Blizzard
             gv.Visibility = Visibility.Collapsed
         End If
 
-        botonCache.IsEnabled = True
+        Cache.Estado(True)
 
     End Sub
 

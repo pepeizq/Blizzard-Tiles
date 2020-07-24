@@ -273,10 +273,4 @@ Public NotInheritable Class MainPage
 
     'CONFIG-----------------------------------------------------------------------------
 
-    Private Sub BotonConfigLimpiarCache_Click(sender As Object, e As RoutedEventArgs) Handles botonConfigLimpiarCache.Click
-
-        Cache.Limpiar()
-
-    End Sub
-
 End Class

@@ -18,6 +18,11 @@ Module Cache
         RemoveHandler cbActivar.Unchecked, AddressOf ActivarCache
         AddHandler cbActivar.Unchecked, AddressOf ActivarCache
 
+        Dim botonLimpiar As Button = pagina.FindName("botonConfigLimpiarCache")
+
+        RemoveHandler botonLimpiar.Click, AddressOf Limpiar
+        AddHandler botonLimpiar.Click, AddressOf Limpiar
+
         If Not ApplicationData.Current.LocalSettings.Values("cache") = Nothing Then
             If ApplicationData.Current.LocalSettings.Values("cache") = 0 Then
                 cbActivar.IsChecked = False
@@ -109,7 +114,7 @@ Module Cache
 
     End Function
 
-    Public Async Sub Limpiar()
+    Public Async Sub Limpiar(sender As Object, e As RoutedEventArgs)
 
         Dim frame As Frame = Window.Current.Content
         Dim pagina As Page = frame.Content
@@ -137,8 +142,20 @@ Module Cache
 
         Blizzard.Generar()
 
-        boton.IsEnabled = True
         pr.Visibility = Visibility.Collapsed
+
+    End Sub
+
+    Public Sub Estado(estado As Boolean)
+
+        Dim frame As Frame = Window.Current.Content
+        Dim pagina As Page = frame.Content
+
+        Dim cbActivar As CheckBox = pagina.FindName("cbActivarCache")
+        cbActivar.IsEnabled = estado
+
+        Dim botonLimpiar As Button = pagina.FindName("botonConfigLimpiarCache")
+        botonLimpiar.IsEnabled = estado
 
     End Sub
 
