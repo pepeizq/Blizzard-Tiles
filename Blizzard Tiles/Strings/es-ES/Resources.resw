@@ -138,9 +138,6 @@
   <data name="NoFoldersDetected" xml:space="preserve">
     <value>Ninguna</value>
   </data>
-  <data name="NoGamesDetected.Text" xml:space="preserve">
-    <value>No se han detectado juegos, ve a Configuración</value>
-  </data>
   <data name="MoreThings" xml:space="preserve">
     <value>Más Cosas</value>
   </data>

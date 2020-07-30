@@ -138,13 +138,11 @@ Module Blizzard
         Await helper.SaveFileAsync(Of List(Of Tile))("juegos", listaJuegos)
 
         Dim gridTiles As Grid = pagina.FindName("gridTiles")
-        Dim gridAvisoNoJuegos As Grid = pagina.FindName("gridAvisoNoJuegos")
         Dim spBuscador As StackPanel = pagina.FindName("spBuscador")
 
         If Not listaJuegos Is Nothing Then
             If listaJuegos.Count > 0 Then
                 gridTiles.Visibility = Visibility.Visible
-                gridAvisoNoJuegos.Visibility = Visibility.Collapsed
                 gridSeleccionarJuego.Visibility = Visibility.Visible
                 spBuscador.Visibility = Visibility.Visible
 
@@ -157,7 +155,6 @@ Module Blizzard
                 Next
             Else
                 gridTiles.Visibility = Visibility.Collapsed
-                gridAvisoNoJuegos.Visibility = Visibility.Visible
                 gridSeleccionarJuego.Visibility = Visibility.Collapsed
                 spBuscador.Visibility = Visibility.Collapsed
 
@@ -165,7 +162,6 @@ Module Blizzard
             End If
         Else
             gridTiles.Visibility = Visibility.Collapsed
-            gridAvisoNoJuegos.Visibility = Visibility.Visible
             gridSeleccionarJuego.Visibility = Visibility.Collapsed
             spBuscador.Visibility = Visibility.Collapsed
 
@@ -347,14 +343,8 @@ Module Blizzard
 
     Private Sub UsuarioEntraBoton(sender As Object, e As PointerRoutedEventArgs)
 
-        Dim frame As Frame = Window.Current.Content
-        Dim pagina As Page = frame.Content
-
-        Dim gvTiles As AdaptiveGridView = pagina.FindName("gvTiles")
-
         Dim boton As Button = sender
-
-        boton.Saturation(0).Scale(1.05, 1.05, gvTiles.DesiredWidth / 2, gvTiles.ItemHeight / 2).Start()
+        boton.Saturation(0).Scale(1.05, 1.05, boton.ActualWidth / 2, boton.ActualHeight / 2).Start()
 
         Window.Current.CoreWindow.PointerCursor = New CoreCursor(CoreCursorType.Hand, 1)
 
@@ -362,14 +352,8 @@ Module Blizzard
 
     Private Sub UsuarioSaleBoton(sender As Object, e As PointerRoutedEventArgs)
 
-        Dim frame As Frame = Window.Current.Content
-        Dim pagina As Page = frame.Content
-
-        Dim gvTiles As AdaptiveGridView = pagina.FindName("gvTiles")
-
         Dim boton As Button = sender
-
-        boton.Saturation(1).Scale(1, 1, gvTiles.DesiredWidth / 2, gvTiles.ItemHeight / 2).Start()
+        boton.Saturation(1).Scale(1, 1, boton.ActualWidth / 2, boton.ActualHeight / 2).Start()
 
         Window.Current.CoreWindow.PointerCursor = New CoreCursor(CoreCursorType.Arrow, 1)
 

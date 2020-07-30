@@ -12,8 +12,8 @@ Public NotInheritable Class MainPage
 
         Dim recursos As New Resources.ResourceLoader()
 
-        nvPrincipal.MenuItems.Add(NavigationViewItems.Generar(recursos.GetString("Tiles"), FontAwesomeIcon.Home, 0))
-        nvPrincipal.MenuItems.Add(NavigationViewItems.Generar(recursos.GetString("Config"), FontAwesomeIcon.Cog, 1))
+        nvPrincipal.MenuItems.Add(NavigationViewItems.Generar(recursos.GetString("Tiles"), FontAwesome5.EFontAwesomeIcon.Solid_Home, 0))
+        nvPrincipal.MenuItems.Add(NavigationViewItems.Generar(recursos.GetString("Config"), FontAwesome5.EFontAwesomeIcon.Solid_Cog, 1))
         nvPrincipal.MenuItems.Add(New NavigationViewItemSeparator)
         nvPrincipal.MenuItems.Add(MasCosas.Generar("https://github.com/pepeizq/Blizzard-Tiles", "https://poeditor.com/join/project/suaRhCuaWT"))
 
@@ -30,10 +30,6 @@ Public NotInheritable Class MainPage
                 GridVisibilidad(gridTiles, item.Text)
 
                 If spProgreso.Visibility = Visibility.Visible Then
-                    gridSeleccionarJuego.Visibility = Visibility.Collapsed
-                End If
-
-                If gridAvisoNoJuegos.Visibility = Visibility.Visible Then
                     gridSeleccionarJuego.Visibility = Visibility.Collapsed
                 End If
 
@@ -95,11 +91,11 @@ Public NotInheritable Class MainPage
                                                                    If estado = True Then
                                                                        gridPersonalizarTiles.Background = App.Current.Resources("GridAcrilico")
                                                                        gridConfig.Background = App.Current.Resources("GridAcrilico")
-                                                                       gridConfigTiles.Background = App.Current.Resources("GridTituloBackground")
+                                                                       gridConfigCache.Background = App.Current.Resources("GridTituloBackground")
                                                                    Else
                                                                        gridPersonalizarTiles.Background = New SolidColorBrush(Colors.LightGray)
                                                                        gridConfig.Background = New SolidColorBrush(Colors.LightGray)
-                                                                       gridConfigTiles.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
+                                                                       gridConfigCache.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
                                                                    End If
                                                                End Sub)
 
