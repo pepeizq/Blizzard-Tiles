@@ -267,4 +267,7 @@
   <data name="OptionsLogo.Content" xml:space="preserve">
     <value>Enseñar Logo del Juego</value>
   </data>
+  <data name="MoreThings_Video" xml:space="preserve">
+    <value>Vídeo en YouTube</value>
+  </data>
 </root>
