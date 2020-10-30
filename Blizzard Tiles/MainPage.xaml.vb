@@ -280,7 +280,7 @@ Public NotInheritable Class MainPage
                 Dim usuario As User = usuarios(0)
 
                 Dim contexto As StoreContext = StoreContext.GetForUser(usuario)
-                Await contexto.RequestPurchaseAsync("9NZMQV0HB386")
+                Await contexto.RequestPurchaseAsync("9NLKV74DDS0M")
             End If
         End If
 
