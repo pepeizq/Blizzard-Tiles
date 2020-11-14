@@ -200,6 +200,7 @@ Public NotInheritable Class MainPage
 
         gridAñadirTile.Visibility = Visibility.Collapsed
         spBuscador.Visibility = Visibility.Visible
+        gridSeleccionarJuego.Visibility = Visibility.Visible
 
         If ApplicationData.Current.LocalSettings.Values("ancho_grid_tiles") > 0 Then
             If Blizzard.anchoColumna < ApplicationData.Current.LocalSettings.Values("ancho_grid_tiles") Then

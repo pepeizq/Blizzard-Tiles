@@ -9,7 +9,7 @@ Imports Windows.UI.Xaml.Media.Animation
 
 Module Blizzard
 
-    Public anchoColumna As Integer = 232
+    Public anchoColumna As Integer = 200
 
     Public Async Sub Generar()
 
@@ -88,40 +88,12 @@ Module Blizzard
                     If añadir = True Then
                         Dim titulo As String = ficha.Titulo
 
-                        Dim logo As String = String.Empty
+                        Dim imagenIcono As String = Await Cache.DescargarImagen(Nothing, juegoBBDD.IDTienda, "icono")
+                        Dim imagenLogo As String = Await Cache.DescargarImagen(Nothing, juegoBBDD.IDTienda, "logo")
+                        Dim imagenAncha As String = Await Cache.DescargarImagen(Nothing, juegoBBDD.IDTienda, "ancha")
+                        Dim imagenGrande As String = Await Cache.DescargarImagen(Nothing, juegoBBDD.IDTienda, "grande")
 
-                        If juegoBBDD.MostrarLogo = True Then
-                            Dim htmlLogo As String = Await Decompiladores.HttpClient(New Uri("https://eu.shop.battle.net/api/product/" + juegoBBDD.Slug))
-
-                            If Not htmlLogo = Nothing Then
-                                Dim juegoLogo As BlizzardAPIJuego = JsonConvert.DeserializeObject(Of BlizzardAPIJuego)(htmlLogo)
-                                logo = juegoLogo.Icono
-                            End If
-
-                            If Not logo = String.Empty Then
-                                If Not logo.Contains("https:") Then
-                                    logo = "https:" + logo
-                                End If
-                            End If
-                        End If
-
-                        Dim horizontal As String = Await Cache.DescargarImagen(ficha.ImagenHorizontal, juegoBBDD.IDTienda, "horizontal")
-
-                        If Not horizontal = String.Empty Then
-                            If Not horizontal.Contains("https:") Then
-                                horizontal = "https:" + horizontal
-                            End If
-                        End If
-
-                        Dim vertical As String = Await Cache.DescargarImagen(ficha.ImagenVertical, juegoBBDD.IDTienda, "vertical")
-
-                        If Not vertical = String.Empty Then
-                            If Not vertical.Contains("https:") Then
-                                vertical = "https:" + vertical
-                            End If
-                        End If
-
-                        Dim juego As New Tile(titulo, idTienda, "battlenet://" + juegoBBDD.IDEjecutable, logo, logo, logo, horizontal, vertical)
+                        Dim juego As New Tile(titulo, idTienda, "battlenet://" + juegoBBDD.IDEjecutable, imagenIcono, imagenLogo, imagenAncha, imagenGrande)
                         listaJuegos.Add(juego)
                         Exit For
                     End If
@@ -185,9 +157,7 @@ Module Blizzard
 
         Dim boton As New Button
 
-        Dim grid As New Grid
-
-        Dim imagenFondo As New ImageEx With {
+        Dim imagen As New ImageEx With {
             .Source = juego.ImagenGrande,
             .IsCacheEnabled = True,
             .Stretch = Stretch.UniformToFill,
@@ -196,24 +166,8 @@ Module Blizzard
             .VerticalAlignment = VerticalAlignment.Center
         }
 
-        grid.Children.Add(imagenFondo)
-
-        If Not juego.ImagenLogo = String.Empty Then
-            Dim imagenLogo As New ImageEx With {
-                .Source = juego.ImagenLogo,
-                .IsCacheEnabled = True,
-                .Stretch = Stretch.Uniform,
-                .Padding = New Thickness(0, 0, 0, 0),
-                .Margin = New Thickness(20, 20, 20, 20),
-                .HorizontalAlignment = HorizontalAlignment.Center,
-                .VerticalAlignment = VerticalAlignment.Bottom
-            }
-
-            grid.Children.Add(imagenLogo)
-        End If
-
         boton.Tag = juego
-        boton.Content = grid
+        boton.Content = imagen
         boton.Padding = New Thickness(0, 0, 0, 0)
         boton.Background = New SolidColorBrush(Colors.Transparent)
 
@@ -255,7 +209,7 @@ Module Blizzard
         Dim imagenJuegoSeleccionado As ImageEx = pagina.FindName("imagenJuegoSeleccionado")
 
         If Not juego.ImagenMediana = String.Empty Then
-            imagenJuegoSeleccionado.Source = New BitmapImage(New Uri(juego.ImagenMediana))
+            imagenJuegoSeleccionado.Source = juego.ImagenAncha
         Else
             imagenJuegoSeleccionado.Source = Nothing
         End If
@@ -320,23 +274,11 @@ Module Blizzard
         End If
 
         If Not juego.ImagenAncha = Nothing Then
-            If Not juego.ImagenLogo = Nothing Then
-                imagenAnchaLogo.Source = juego.ImagenLogo
-                imagenAnchaLogo.Visibility = Visibility.Visible
-                imagenAnchaLogo.Tag = juego.ImagenLogo
-            End If
-
             imagenAncha.Source = juego.ImagenAncha
             imagenAncha.Tag = juego.ImagenAncha
         End If
 
         If Not juego.ImagenGrande = Nothing Then
-            If Not juego.ImagenLogo = Nothing Then
-                imagenGrandeLogo.Source = juego.ImagenLogo
-                imagenGrandeLogo.Visibility = Visibility.Visible
-                imagenGrandeLogo.Tag = juego.ImagenLogo
-            End If
-
             imagenGrande.Source = juego.ImagenGrande
             imagenGrande.Tag = juego.ImagenGrande
         End If

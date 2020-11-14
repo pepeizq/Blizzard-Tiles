@@ -279,4 +279,7 @@
   <data name="TrialMessage.Text" xml:space="preserve">
     <value>You are using the trial version of the app, it is limited to 1 Tile.</value>
   </data>
+  <data name="ConfigCleanCache.Text" xml:space="preserve">
+    <value>Clean Cache</value>
+  </data>
 </root>
