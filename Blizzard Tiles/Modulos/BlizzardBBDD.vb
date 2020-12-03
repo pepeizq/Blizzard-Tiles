@@ -5,19 +5,19 @@ Module BlizzardBBDD
     Public Function IDs()
 
         Dim lista As New List(Of BlizzardJuego) From {
-            New BlizzardJuego("call-of-duty-black-ops-4", "VIPR", "55970"),
-            New BlizzardJuego("call-of-duty-black-ops-cold-war", "ZEUS", "73929"),
-            New BlizzardJuego("call-of-duty-modern-warfare", "ODIN", "68930"),
-            New BlizzardJuego("call-of-duty-warzone", "ODIN", "73295"),
-            New BlizzardJuego("call-of-duty-modern-warfare-2-campaign-remastered", "LAZR", "73521"),
-            New BlizzardJuego("diablo-iii", "D3", "51"),
-            New BlizzardJuego("hearthstone-heroes-of-warcraft", "WTCG", "29509"),
-            New BlizzardJuego("heroes-of-the-storm", "Hero", "29489"),
-            New BlizzardJuego("overwatch", "Pro", "20991"),
-            New BlizzardJuego("starcraft-remastered", "S1", "28298"),
-            New BlizzardJuego("starcraft-ii", "S2", "33511"),
-            New BlizzardJuego("warcraft-iii-reforged", "W3", "44414"),
-            New BlizzardJuego("world-of-warcraft-shadowlands", "WoW", "61710")
+            New BlizzardJuego("Call of Duty: Black Ops 4", "VIPR", "55970"),
+            New BlizzardJuego("Call of Duty: Black Ops Cold War", "ZEUS", "73929"),
+            New BlizzardJuego("Call of Duty: Modern Warfare", "ODIN", "68930"),
+            New BlizzardJuego("Call of Duty: Modern Warfare 2 Campaign Remastered", "LAZR", "73521"),
+            New BlizzardJuego("Call of Duty: Warzone", "ODIN", "73295"),
+            New BlizzardJuego("Diablo III", "D3", "51"),
+            New BlizzardJuego("Hearthstone", "WTCG", "29509"),
+            New BlizzardJuego("Heroes of the Storm", "Hero", "29489"),
+            New BlizzardJuego("Overwatch", "Pro", "20991"),
+            New BlizzardJuego("StarCraft II", "S2", "33511"),
+            New BlizzardJuego("StarCraft Remastered", "S1", "28298"),
+            New BlizzardJuego("Warcraft III: Reforged", "W3", "44414"),
+            New BlizzardJuego("World of Warcraft", "WoW", "61710")
         }
 
         Return lista
@@ -48,12 +48,12 @@ End Module
 
 Public Class BlizzardJuego
 
-    Public Slug As String
+    Public Titulo As String
     Public IDEjecutable As String
     Public IDTienda As String
 
-    Public Sub New(ByVal slug As String, ByVal idEjecutable As String, ByVal idTienda As String)
-        Me.Slug = slug
+    Public Sub New(ByVal titulo As String, ByVal idEjecutable As String, ByVal idTienda As String)
+        Me.Titulo = titulo
         Me.IDEjecutable = idEjecutable
         Me.IDTienda = idTienda
     End Sub

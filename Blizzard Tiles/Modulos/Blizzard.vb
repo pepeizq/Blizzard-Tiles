@@ -1,15 +1,12 @@
 ﻿Imports Microsoft.Toolkit.Uwp.Helpers
 Imports Microsoft.Toolkit.Uwp.UI.Animations
 Imports Microsoft.Toolkit.Uwp.UI.Controls
-Imports Newtonsoft.Json
-Imports Windows.Storage
 Imports Windows.UI
 Imports Windows.UI.Core
-Imports Windows.UI.Xaml.Media.Animation
 
 Module Blizzard
 
-    Public anchoColumna As Integer = 200
+    Public anchoColumna As Integer = 180
 
     Public Async Sub Generar()
 
@@ -20,8 +17,8 @@ Module Blizzard
         Dim frame As Frame = Window.Current.Content
         Dim pagina As Page = frame.Content
 
-        Dim spProgreso As StackPanel = pagina.FindName("spProgreso")
-        spProgreso.Visibility = Visibility.Visible
+        Dim gridProgreso As Grid = pagina.FindName("gridProgreso")
+        Interfaz.Pestañas.Visibilidad_Pestañas(gridProgreso, Nothing)
 
         Dim pbProgreso As ProgressBar = pagina.FindName("pbProgreso")
         pbProgreso.Value = 0
@@ -31,10 +28,8 @@ Module Blizzard
 
         Cache.Estado(False)
 
-        Dim gridSeleccionarJuego As Grid = pagina.FindName("gridSeleccionarJuego")
-        gridSeleccionarJuego.Visibility = Visibility.Collapsed
-
         Dim gv As AdaptiveGridView = pagina.FindName("gvTiles")
+        gv.DesiredWidth = anchoColumna
         gv.Items.Clear()
 
         Dim listaJuegos As New List(Of Tile)
@@ -43,81 +38,41 @@ Module Blizzard
             listaJuegos = Await helper.ReadFileAsync(Of List(Of Tile))("juegos")
         End If
 
-        Dim listaFamilias As List(Of String) = BlizzardBBDD.Familias
-        Dim listaFamilias2 As New List(Of BlizzardAPIFamilia)
-
-        Dim k As Integer = 0
-        For Each familia In listaFamilias
-            Dim html As String = Await Decompiladores.HttpClient(New Uri("https://eu.shop.battle.net/api/browsing/family/" + familia))
-
-            If Not html = Nothing Then
-                Dim listaJuegosFamilia As BlizzardAPIFamilia = JsonConvert.DeserializeObject(Of BlizzardAPIFamilia)(html)
-                listaFamilias2.Add(listaJuegosFamilia)
-            End If
-
-            pbProgreso.Value = CInt((100 / listaFamilias.Count) * k)
-            tbProgreso.Text = k.ToString + "/" + listaFamilias.Count.ToString
-            k += 1
-        Next
-
         Dim juegosBBDD As List(Of BlizzardJuego) = BlizzardBBDD.IDs
 
         For Each juegoBBDD In juegosBBDD
-            For Each familia2 In listaFamilias2
-                Dim añadir As Boolean = False
+            Dim añadir As Boolean = True
 
-                For Each ficha In familia2.Fichas
-                    Dim idTienda As String = juegoBBDD.IDTienda
-
-                    For Each id In ficha.IDs
-                        If id = idTienda Then
-                            añadir = True
-                        End If
-                    Next
-
-                    Dim i As Integer = 0
-                    If Not listaJuegos Is Nothing Then
-                        While i < listaJuegos.Count
-                            If listaJuegos(i).ID = idTienda Then
-                                añadir = False
-                            End If
-                            i += 1
-                        End While
+            Dim i As Integer = 0
+            If Not listaJuegos Is Nothing Then
+                While i < listaJuegos.Count
+                    If listaJuegos(i).ID = juegoBBDD.IDTienda Then
+                        añadir = False
                     End If
+                    i += 1
+                End While
+            End If
 
-                    If añadir = True Then
-                        Dim titulo As String = ficha.Titulo
+            If añadir = True Then
+                Dim titulo As String = juegoBBDD.Titulo
 
-                        Dim imagenIcono As String = Await Cache.DescargarImagen(Nothing, juegoBBDD.IDTienda, "icono")
-                        Dim imagenLogo As String = Await Cache.DescargarImagen(Nothing, juegoBBDD.IDTienda, "logo")
-                        Dim imagenAncha As String = Await Cache.DescargarImagen(Nothing, juegoBBDD.IDTienda, "ancha")
-                        Dim imagenGrande As String = Await Cache.DescargarImagen(Nothing, juegoBBDD.IDTienda, "grande")
+                Dim imagenIcono As String = Await Cache.DescargarImagen(Nothing, juegoBBDD.IDTienda, "icono")
+                Dim imagenLogo As String = Await Cache.DescargarImagen(Nothing, juegoBBDD.IDTienda, "logo")
+                Dim imagenAncha As String = Await Cache.DescargarImagen(Nothing, juegoBBDD.IDTienda, "ancha")
+                Dim imagenGrande As String = Await Cache.DescargarImagen(Nothing, juegoBBDD.IDTienda, "grande")
 
-                        Dim juego As New Tile(titulo, idTienda, "battlenet://" + juegoBBDD.IDEjecutable, imagenIcono, imagenLogo, imagenAncha, imagenGrande)
-                        listaJuegos.Add(juego)
-                        Exit For
-                    End If
-                Next
-
-                If añadir = True Then
-                    Exit For
-                End If
-            Next
+                Dim juego As New Tile(titulo, juegoBBDD.IDTienda, "battlenet://" + juegoBBDD.IDEjecutable, imagenIcono, imagenLogo, imagenAncha, imagenGrande)
+                listaJuegos.Add(juego)
+            End If
         Next
-
-        spProgreso.Visibility = Visibility.Collapsed
 
         Await helper.SaveFileAsync(Of List(Of Tile))("juegos", listaJuegos)
 
-        Dim gridTiles As Grid = pagina.FindName("gridTiles")
-        Dim spBuscador As StackPanel = pagina.FindName("spBuscador")
+        Dim gridJuegos As Grid = pagina.FindName("gridJuegos")
+        Interfaz.Pestañas.Visibilidad_Pestañas(gridJuegos, recursos.GetString("Games"))
 
         If Not listaJuegos Is Nothing Then
             If listaJuegos.Count > 0 Then
-                gridTiles.Visibility = Visibility.Visible
-                gridSeleccionarJuego.Visibility = Visibility.Visible
-                spBuscador.Visibility = Visibility.Visible
-
                 listaJuegos.Sort(Function(x, y) x.Titulo.CompareTo(y.Titulo))
 
                 gv.Items.Clear()
@@ -125,19 +80,7 @@ Module Blizzard
                 For Each juego In listaJuegos
                     BotonEstilo(juego, gv)
                 Next
-            Else
-                gridTiles.Visibility = Visibility.Collapsed
-                gridSeleccionarJuego.Visibility = Visibility.Collapsed
-                spBuscador.Visibility = Visibility.Collapsed
-
-                gv.Visibility = Visibility.Collapsed
             End If
-        Else
-            gridTiles.Visibility = Visibility.Collapsed
-            gridSeleccionarJuego.Visibility = Visibility.Collapsed
-            spBuscador.Visibility = Visibility.Collapsed
-
-            gv.Visibility = Visibility.Collapsed
         End If
 
         Cache.Estado(True)
@@ -183,8 +126,8 @@ Module Blizzard
         ToolTipService.SetPlacement(boton, PlacementMode.Mouse)
 
         AddHandler boton.Click, AddressOf BotonTile_Click
-        AddHandler boton.PointerEntered, AddressOf UsuarioEntraBoton
-        AddHandler boton.PointerExited, AddressOf UsuarioSaleBoton
+        AddHandler boton.PointerEntered, AddressOf Interfaz.Entra_Boton_Imagen
+        AddHandler boton.PointerExited, AddressOf Interfaz.Sale_Boton_Imagen
 
         gv.Items.Add(panel)
 
@@ -193,55 +136,25 @@ Module Blizzard
     Private Sub BotonTile_Click(sender As Object, e As RoutedEventArgs)
 
         Trial.Detectar()
+        Interfaz.AñadirTile.ResetearValores()
 
         Dim frame As Frame = Window.Current.Content
         Dim pagina As Page = frame.Content
 
-        Dim spBuscador As StackPanel = pagina.FindName("spBuscador")
-        spBuscador.Visibility = Visibility.Collapsed
-
         Dim botonJuego As Button = e.OriginalSource
         Dim juego As Tile = botonJuego.Tag
+
+        Dim gridAñadirTile As Grid = pagina.FindName("gridAñadirTile")
+        Interfaz.Pestañas.Visibilidad_Pestañas(gridAñadirTile, juego.Titulo)
 
         Dim botonAñadirTile As Button = pagina.FindName("botonAñadirTile")
         botonAñadirTile.Tag = juego
 
         Dim imagenJuegoSeleccionado As ImageEx = pagina.FindName("imagenJuegoSeleccionado")
-
-        If Not juego.ImagenMediana = String.Empty Then
-            imagenJuegoSeleccionado.Source = juego.ImagenAncha
-        Else
-            imagenJuegoSeleccionado.Source = Nothing
-        End If
+        imagenJuegoSeleccionado.Source = juego.ImagenAncha
 
         Dim tbJuegoSeleccionado As TextBlock = pagina.FindName("tbJuegoSeleccionado")
         tbJuegoSeleccionado.Text = juego.Titulo
-
-        Dim gridSeleccionarJuego As Grid = pagina.FindName("gridSeleccionarJuego")
-        gridSeleccionarJuego.Visibility = Visibility.Collapsed
-
-        Dim gvTiles As GridView = pagina.FindName("gvTiles")
-
-        If gvTiles.ActualWidth > anchoColumna Then
-            ApplicationData.Current.LocalSettings.Values("ancho_grid_tiles") = gvTiles.ActualWidth
-        End If
-
-        gvTiles.Width = anchoColumna
-        gvTiles.Padding = New Thickness(0, 0, 15, 0)
-
-        Dim gridAñadir As Grid = pagina.FindName("gridAñadirTile")
-        gridAñadir.Visibility = Visibility.Visible
-
-        ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("tile", botonJuego)
-
-        Dim animacion As ConnectedAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("tile")
-
-        If Not animacion Is Nothing Then
-            animacion.TryStart(gridAñadir)
-        End If
-
-        Dim tbTitulo As TextBlock = pagina.FindName("tbTitulo")
-        tbTitulo.Text = Package.Current.DisplayName + " (" + Package.Current.Id.Version.Major.ToString + "." + Package.Current.Id.Version.Minor.ToString + "." + Package.Current.Id.Version.Build.ToString + "." + Package.Current.Id.Version.Revision.ToString + ") - " + juego.Titulo
 
         '---------------------------------------------
 
@@ -254,14 +167,8 @@ Module Blizzard
         Dim imagenAncha As ImageEx = pagina.FindName("imagenTileAncha")
         imagenAncha.Source = Nothing
 
-        Dim imagenAnchaLogo As ImageEx = pagina.FindName("imagenTileAnchaLogo")
-        imagenAnchaLogo.Source = Nothing
-
         Dim imagenGrande As ImageEx = pagina.FindName("imagenTileGrande")
         imagenGrande.Source = Nothing
-
-        Dim imagenGrandeLogo As ImageEx = pagina.FindName("imagenTileGrandeLogo")
-        imagenGrandeLogo.Source = Nothing
 
         If Not juego.ImagenPequeña Is Nothing Then
             imagenPequeña.Source = juego.ImagenPequeña

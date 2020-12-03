@@ -121,10 +121,14 @@
     <Compile Include="Modulos\Blizzard.vb" />
     <Compile Include="Modulos\BlizzardBBDD.vb" />
     <Compile Include="Modulos\Cache.vb" />
-    <Compile Include="Modulos\Configuracion.vb" />
     <Compile Include="Modulos\Decompiladores.vb" />
+    <Compile Include="Modulos\Interfaz\AñadirTile.vb" />
+    <Compile Include="Modulos\Interfaz\Busqueda.vb" />
+    <Compile Include="Modulos\Interfaz\EfectosHover.vb" />
+    <Compile Include="Modulos\Interfaz\NavigationViewItems.vb" />
+    <Compile Include="Modulos\Interfaz\MasTiles.vb" />
+    <Compile Include="Modulos\Interfaz\Pestañas.vb" />
     <Compile Include="Modulos\MasCosas.vb" />
-    <Compile Include="Modulos\NavigationViewItems.vb" />
     <Compile Include="Modulos\Notificaciones.vb" />
     <Compile Include="Modulos\Tiles\Añadir.vb" />
     <Compile Include="Modulos\Tiles\Imagen.vb" />
@@ -138,8 +142,6 @@
     </AppxManifest>
     <None Include="Blizzard Tiles_StoreKey.pfx" />
     <None Include="Blizzard Tiles_TemporaryKey.pfx" />
-    <PRIResource Include="Strings\pl-PL\Resources.resw" />
-    <PRIResource Include="Strings\zh-CN\Resources.resw" />
     <PRIResource Include="Strings\es-ES\Resources.resw">
       <SubType>Designer</SubType>
     </PRIResource>
@@ -255,7 +257,6 @@
     <Content Include="Assets\Logos\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Logos\Wide310x150Logo.scale-400.png" />
     <Content Include="My Project\Default.rd.xml" />
-    <Content Include="Strings\Estados.txt" />
     <None Include="Package.xml" />
     <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>
