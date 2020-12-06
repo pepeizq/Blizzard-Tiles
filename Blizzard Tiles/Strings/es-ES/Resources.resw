@@ -231,8 +231,50 @@
   <data name="Disabled" xml:space="preserve">
     <value>Desactivado</value>
   </data>
+  <data name="Discord_ConfigImport.Text" xml:space="preserve">
+    <value>Selecciona de donde vas a importar los juegos:</value>
+  </data>
+  <data name="Discord_ConfigImport1" xml:space="preserve">
+    <value>Juegos instalados en Discord</value>
+  </data>
+  <data name="Discord_ConfigImport2" xml:space="preserve">
+    <value>Juegos importados de Steam</value>
+  </data>
+  <data name="Discord_ConfigMessage1.Text" xml:space="preserve">
+    <value>Selecciona la carpeta donde tengas instalados tus juegos de Discord:</value>
+  </data>
+  <data name="Discord_ConfigMessage2.Text" xml:space="preserve">
+    <value>Seleciona el fichero con extensión .log en: C:\Users\[your user]\AppData\Roaming\discord\Local Storage\leveldb</value>
+  </data>
+  <data name="Discord_Message.Text" xml:space="preserve">
+    <value>Si tus juegos son de Steam o de otra plataforma ajena a Discord, te recomiendo adquirir la app correspondiente para tus juegos.</value>
+  </data>
+  <data name="Discord_OpenTiles.Text" xml:space="preserve">
+    <value>Mostrar Apps</value>
+  </data>
+  <data name="Discord_StoreDescription" xml:space="preserve">
+    <value>Añade Tiles de tus juegos de la app de Discord en el Menú Inicio de Windows 10.</value>
+  </data>
+  <data name="Discord_StoreTags" xml:space="preserve">
+    <value>Discord,Steam</value>
+  </data>
+  <data name="Discord_Title" xml:space="preserve">
+    <value>Tiles para los juegos de Discord</value>
+  </data>
   <data name="Games" xml:space="preserve">
     <value>Juegos</value>
+  </data>
+  <data name="Gog_ConfigMessage.Text" xml:space="preserve">
+    <value>Selecciona la carpeta: C:\ProgramData\GOG.com\Galaxy\webcache\[Tu ID de Usuario]\gog</value>
+  </data>
+  <data name="Gog_StoreDescription" xml:space="preserve">
+    <value>Añade Tiles de tus juegos de GOG Galaxy en el Menú Inicio de Windows 10.</value>
+  </data>
+  <data name="Gog_StoreTags" xml:space="preserve">
+    <value>Gog,Galaxy,Witcher,Gwent,Cyberpunk</value>
+  </data>
+  <data name="Gog_Title" xml:space="preserve">
+    <value>Tiles para los juegos de GOG</value>
   </data>
   <data name="ImageAdjustment.Text" xml:space="preserve">
     <value>Ajuste de imagen al espacio de la Tile:</value>
@@ -339,11 +381,26 @@
   <data name="MoreTilesError" xml:space="preserve">
     <value>No se ha podido cargar el listado de aplicaciones, pero puedes visitar mi web para verlas.</value>
   </data>
+  <data name="MoreTilesOpen" xml:space="preserve">
+    <value>Abrir App en la Tienda</value>
+  </data>
   <data name="No" xml:space="preserve">
     <value>No</value>
   </data>
   <data name="OpenWeb" xml:space="preserve">
     <value>Abrir Web</value>
+  </data>
+  <data name="Origin_ConfigMessage.Text" xml:space="preserve">
+    <value>Selecciona la carpeta: C:\ProgramData\Origin\LocalContent</value>
+  </data>
+  <data name="Origin_StoreDescription" xml:space="preserve">
+    <value>Añade Tiles de tus juegos de Origin en el Menú Inicio de Windows 10.</value>
+  </data>
+  <data name="Origin_StoreTags" xml:space="preserve">
+    <value>Origin,EA Play,Apex,Mass Effect,Battlefield,Star Wars,FIFA</value>
+  </data>
+  <data name="Origin_Title" xml:space="preserve">
+    <value>Tiles para los juegos de Origin</value>
   </data>
   <data name="Personalization.Text" xml:space="preserve">
     <value>Personalización</value>

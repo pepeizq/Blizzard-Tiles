@@ -231,8 +231,50 @@
   <data name="Disabled" xml:space="preserve">
     <value>Disabled</value>
   </data>
+  <data name="Discord_ConfigImport.Text" xml:space="preserve">
+    <value>Select where you are going to import the games:</value>
+  </data>
+  <data name="Discord_ConfigImport1" xml:space="preserve">
+    <value>Games installed on Discord</value>
+  </data>
+  <data name="Discord_ConfigImport2" xml:space="preserve">
+    <value>Games imported from Steam</value>
+  </data>
+  <data name="Discord_ConfigMessage1.Text" xml:space="preserve">
+    <value>Select the folder where you have your Discord games installed:</value>
+  </data>
+  <data name="Discord_ConfigMessage2.Text" xml:space="preserve">
+    <value>Select the file with extension .log in: C:\Users\[your user]\AppData\Roaming\discord\Local Storage\leveldb</value>
+  </data>
+  <data name="Discord_Message.Text" xml:space="preserve">
+    <value>If your games are from Steam or from another platform other than Discord, I recommend purchasing the corresponding app for your games.</value>
+  </data>
+  <data name="Discord_OpenTiles.Text" xml:space="preserve">
+    <value>Show Apps</value>
+  </data>
+  <data name="Discord_StoreDescription" xml:space="preserve">
+    <value>Pin Tiles of your games from the Discord App to the Windows 10 Start Menu.</value>
+  </data>
+  <data name="Discord_StoreTags" xml:space="preserve">
+    <value>Discord,Steam</value>
+  </data>
+  <data name="Discord_Title" xml:space="preserve">
+    <value>Tiles for Discord Games</value>
+  </data>
   <data name="Games" xml:space="preserve">
     <value>Games</value>
+  </data>
+  <data name="Gog_ConfigMessage.Text" xml:space="preserve">
+    <value>Select the folder: C:\ProgramData\GOG.com\Galaxy\webcache\[Your ID User]\gog</value>
+  </data>
+  <data name="Gog_StoreDescription" xml:space="preserve">
+    <value>Pin Tiles of your games from GOG Galaxy to the Windows 10 Start Menu.</value>
+  </data>
+  <data name="Gog_StoreTags" xml:space="preserve">
+    <value>Gog,Galaxy,Witcher,Gwent,Cyberpunk</value>
+  </data>
+  <data name="Gog_Title" xml:space="preserve">
+    <value>Tiles for GOG Games</value>
   </data>
   <data name="ImageAdjustment.Text" xml:space="preserve">
     <value>Image fit to Tile space:</value>
@@ -339,11 +381,26 @@
   <data name="MoreTilesError" xml:space="preserve">
     <value>The list of applications could not be loaded, but you can visit my website to see them.</value>
   </data>
+  <data name="MoreTilesOpen" xml:space="preserve">
+    <value>Open App in Store</value>
+  </data>
   <data name="No" xml:space="preserve">
     <value>No</value>
   </data>
   <data name="OpenWeb" xml:space="preserve">
     <value>Open Web</value>
+  </data>
+  <data name="Origin_ConfigMessage.Text" xml:space="preserve">
+    <value>Select the folder: C:\ProgramData\Origin\LocalContent</value>
+  </data>
+  <data name="Origin_StoreDescription" xml:space="preserve">
+    <value>Pin Tiles of your games from Origin to the Windows 10 Start Menu.</value>
+  </data>
+  <data name="Origin_StoreTags" xml:space="preserve">
+    <value>Origin,EA Play,Apex,Mass Effect,Battlefield,Star Wars,FIFA</value>
+  </data>
+  <data name="Origin_Title" xml:space="preserve">
+    <value>Tiles for Origin Games</value>
   </data>
   <data name="Personalization.Text" xml:space="preserve">
     <value>Personalization</value>
