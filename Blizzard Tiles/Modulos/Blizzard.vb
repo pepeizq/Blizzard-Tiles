@@ -38,6 +38,10 @@ Module Blizzard
             listaJuegos = Await helper.ReadFileAsync(Of List(Of Tile))("juegos")
         End If
 
+        If listaJuegos Is Nothing Then
+            listaJuegos = New List(Of Tile)
+        End If
+
         Dim juegosBBDD As List(Of BlizzardJuego) = BlizzardBBDD.IDs
 
         For Each juegoBBDD In juegosBBDD
@@ -66,7 +70,11 @@ Module Blizzard
             End If
         Next
 
-        Await helper.SaveFileAsync(Of List(Of Tile))("juegos", listaJuegos)
+        Try
+            Await helper.SaveFileAsync(Of List(Of Tile))("juegos", listaJuegos)
+        Catch ex As Exception
+
+        End Try
 
         Dim gridJuegos As Grid = pagina.FindName("gridJuegos")
         Interfaz.Pestañas.Visibilidad_Pestañas(gridJuegos, recursos.GetString("Games"))
