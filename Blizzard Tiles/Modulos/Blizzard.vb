@@ -3,6 +3,7 @@ Imports Microsoft.Toolkit.Uwp.UI.Animations
 Imports Microsoft.Toolkit.Uwp.UI.Controls
 Imports Windows.UI
 Imports Windows.UI.Core
+Imports Windows.UI.Xaml.Media.Animation
 
 Module Blizzard
 
@@ -18,7 +19,7 @@ Module Blizzard
         Dim pagina As Page = frame.Content
 
         Dim gridProgreso As Grid = pagina.FindName("gridProgreso")
-        Interfaz.Pestañas.Visibilidad_Pestañas(gridProgreso, Nothing)
+        Interfaz.Pestañas.Visibilidad(gridProgreso, Nothing, Nothing)
 
         Dim pbProgreso As ProgressBar = pagina.FindName("pbProgreso")
         pbProgreso.Value = 0
@@ -77,7 +78,7 @@ Module Blizzard
         End Try
 
         Dim gridJuegos As Grid = pagina.FindName("gridJuegos")
-        Interfaz.Pestañas.Visibilidad_Pestañas(gridJuegos, recursos.GetString("Games"))
+        Interfaz.Pestañas.Visibilidad(gridJuegos, recursos.GetString("Games"), Nothing)
 
         If Not listaJuegos Is Nothing Then
             If listaJuegos.Count > 0 Then
@@ -153,9 +154,6 @@ Module Blizzard
         Dim botonJuego As Button = e.OriginalSource
         Dim juego As Tile = botonJuego.Tag
 
-        Dim gridAñadirTile As Grid = pagina.FindName("gridAñadirTile")
-        Interfaz.Pestañas.Visibilidad_Pestañas(gridAñadirTile, juego.Titulo)
-
         Dim botonAñadirTile As Button = pagina.FindName("botonAñadirTile")
         botonAñadirTile.Tag = juego
 
@@ -164,6 +162,19 @@ Module Blizzard
 
         Dim tbJuegoSeleccionado As TextBlock = pagina.FindName("tbJuegoSeleccionado")
         tbJuegoSeleccionado.Text = juego.Titulo
+
+        Dim gridAñadirTile As Grid = pagina.FindName("gridAñadirTile")
+        Interfaz.Pestañas.Visibilidad(gridAñadirTile, juego.Titulo, Nothing)
+
+        '---------------------------------------------
+
+        ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("animacionJuego", botonJuego)
+        Dim animacion As ConnectedAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("animacionJuego")
+
+        If Not animacion Is Nothing Then
+            animacion.Configuration = New BasicConnectedAnimationConfiguration
+            animacion.TryStart(gridAñadirTile)
+        End If
 
         '---------------------------------------------
 

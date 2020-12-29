@@ -8,8 +8,6 @@
         nvPrincipal.MenuItems.Add(Interfaz.NavigationViewItems.Generar(recursos.GetString("Games"), FontAwesome5.EFontAwesomeIcon.Solid_Home))
         nvPrincipal.MenuItems.Add(Interfaz.NavigationViewItems.Generar(recursos.GetString("Config"), FontAwesome5.EFontAwesomeIcon.Solid_Cog))
         nvPrincipal.MenuItems.Add(New NavigationViewItemSeparator)
-        nvPrincipal.MenuItems.Add(Interfaz.NavigationViewItems.Generar(recursos.GetString("MoreTiles"), FontAwesome5.EFontAwesomeIcon.Solid_ThLarge))
-        nvPrincipal.MenuItems.Add(Interfaz.NavigationViewItems.Generar(recursos.GetString("MoreThings"), FontAwesome5.EFontAwesomeIcon.Solid_Cube))
 
     End Sub
 
@@ -21,13 +19,9 @@
 
         If Not item Is Nothing Then
             If item.Text = recursos.GetString("Games") Then
-                Interfaz.Pestañas.Visibilidad_Pestañas(gridJuegos, item.Text)
+                Interfaz.Pestañas.Visibilidad(gridJuegos, item.Text, item)
             ElseIf item.Text = recursos.GetString("Config") Then
-                Interfaz.Pestañas.Visibilidad_Pestañas(gridConfig, item.Text)
-            ElseIf item.Text = recursos.GetString("MoreTiles") Then
-                Interfaz.Pestañas.Visibilidad_Pestañas(gridMasTiles, item.Text)
-            ElseIf item.Text = recursos.GetString("MoreThings") Then
-                Interfaz.Pestañas.Visibilidad_Pestañas(gridMasCosas, item.Text)
+                Interfaz.Pestañas.Visibilidad(gridConfig, item.Text, item)
             End If
         End If
 
@@ -42,12 +36,12 @@
         Interfaz.Juegos.Cargar()
         Interfaz.AñadirTile.Cargar()
         Interfaz.Busqueda.Cargar()
-        Interfaz.MasTiles.Cargar()
         Blizzard.Generar()
+        MasTiles.Cargar()
         MasCosas.Cargar()
 
         Dim recursos As New Resources.ResourceLoader()
-        Interfaz.Pestañas.Visibilidad_Pestañas(gridJuegos, recursos.GetString("Games"))
+        Interfaz.Pestañas.Visibilidad(gridJuegos, recursos.GetString("Games"), Nothing)
 
     End Sub
 
