@@ -1,4 +1,5 @@
-﻿Imports Microsoft.Toolkit.Uwp.Helpers
+﻿Imports Blizzard_Tiles.Configuracion
+Imports Microsoft.Toolkit.Uwp.Helpers
 Imports Microsoft.Toolkit.Uwp.UI.Animations
 Imports Microsoft.Toolkit.Uwp.UI.Controls
 Imports Windows.UI
@@ -28,6 +29,7 @@ Module Blizzard
         tbProgreso.Text = String.Empty
 
         Cache.Estado(False)
+        LimpiezaArchivos.Estado(False)
 
         Dim gv As AdaptiveGridView = pagina.FindName("gvTiles")
         gv.DesiredWidth = anchoColumna
@@ -93,6 +95,7 @@ Module Blizzard
         End If
 
         Cache.Estado(True)
+        LimpiezaArchivos.Estado(True)
 
     End Sub
 
