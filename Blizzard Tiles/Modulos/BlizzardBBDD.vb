@@ -5,11 +5,13 @@ Module BlizzardBBDD
     Public Function IDs()
 
         Dim lista As New List(Of BlizzardJuego) From {
+            New BlizzardJuego("Blizzard Arcade Collection", "RTRO", "142345"),
             New BlizzardJuego("Call of Duty: Black Ops 4", "VIPR", "55970"),
             New BlizzardJuego("Call of Duty: Black Ops Cold War", "ZEUS", "73929"),
             New BlizzardJuego("Call of Duty: Modern Warfare", "ODIN", "68930"),
             New BlizzardJuego("Call of Duty: Modern Warfare 2 Campaign Remastered", "LAZR", "73521"),
             New BlizzardJuego("Call of Duty: Warzone", "ODIN", "73295"),
+            New BlizzardJuego("Crash Bandicoot 4: It’s About Time", "WLBY", "165996"),
             New BlizzardJuego("Diablo III", "D3", "51"),
             New BlizzardJuego("Hearthstone", "WTCG", "29509"),
             New BlizzardJuego("Heroes of the Storm", "Hero", "29489"),

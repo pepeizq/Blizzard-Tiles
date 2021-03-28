@@ -156,6 +156,13 @@
     <Content Include="Assets\Iconos\1.png" />
     <Content Include="Assets\Iconos\2.png" />
     <Content Include="Assets\Iconos\3.png" />
+    <Content Include="Assets\Juegos\142345_ancha.jpg" />
+    <Content Include="Assets\Juegos\142345_grande.png" />
+    <Content Include="Assets\Juegos\142345_logo.png" />
+    <Content Include="Assets\Juegos\165996_ancha.png" />
+    <Content Include="Assets\Juegos\165996_grande.png" />
+    <Content Include="Assets\Juegos\165996_icono.png" />
+    <Content Include="Assets\Juegos\165996_logo.png" />
     <Content Include="Assets\Juegos\20991_ancha.png" />
     <Content Include="Assets\Juegos\20991_grande.png" />
     <Content Include="Assets\Juegos\20991_icono.png" />
@@ -302,9 +309,6 @@
     <Import Include="Windows.UI.Xaml.Navigation" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FontAwesome.UWP">
-      <Version>4.7.0.9</Version>
-    </PackageReference>
     <PackageReference Include="FontAwesome5">
       <Version>2.0.8</Version>
     </PackageReference>
