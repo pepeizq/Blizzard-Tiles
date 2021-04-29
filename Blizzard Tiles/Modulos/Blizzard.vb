@@ -2,6 +2,7 @@
 Imports Microsoft.Toolkit.Uwp.Helpers
 Imports Microsoft.Toolkit.Uwp.UI.Animations
 Imports Microsoft.Toolkit.Uwp.UI.Controls
+Imports Windows.ApplicationModel.Core
 Imports Windows.UI
 Imports Windows.UI.Core
 Imports Windows.UI.Xaml.Media.Animation
@@ -73,11 +74,14 @@ Module Blizzard
             End If
         Next
 
-        Try
-            Await helper.SaveFileAsync(Of List(Of Tile))("juegos", listaJuegos)
-        Catch ex As Exception
+        Await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.High,
+                                                                      Async Sub()
+                                                                          Try
+                                                                              Await helper.SaveFileAsync(Of List(Of Tile))("juegos", listaJuegos)
+                                                                          Catch ex As Exception
 
-        End Try
+                                                                          End Try
+                                                                      End Sub)
 
         Dim gridJuegos As Grid = pagina.FindName("gridJuegos")
         Interfaz.Pestañas.Visibilidad(gridJuegos, recursos.GetString("Games"), Nothing)
