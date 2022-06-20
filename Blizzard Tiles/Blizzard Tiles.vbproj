@@ -175,6 +175,10 @@
     <Content Include="Assets\Juegos\20991_grande.png" />
     <Content Include="Assets\Juegos\20991_icono.png" />
     <Content Include="Assets\Juegos\20991_logo.png" />
+    <Content Include="Assets\Juegos\27472_ancha.png" />
+    <Content Include="Assets\Juegos\27472_grande.png" />
+    <Content Include="Assets\Juegos\27472_icono.png" />
+    <Content Include="Assets\Juegos\27472_logo.png" />
     <Content Include="Assets\Juegos\28298_ancha.png" />
     <Content Include="Assets\Juegos\28298_grande.png" />
     <Content Include="Assets\Juegos\28298_icono.png" />

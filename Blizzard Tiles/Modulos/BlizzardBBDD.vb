@@ -15,6 +15,7 @@ Module BlizzardBBDD
             New BlizzardJuego("Crash Bandicoot 4: It’s About Time", "WLBY", "165996"),
             New BlizzardJuego("Diablo II: Resurrected", "OSI", "168304"),
             New BlizzardJuego("Diablo III", "D3", "51"),
+            New BlizzardJuego("Diablo Immortal", "ANBS", "27472"),
             New BlizzardJuego("Hearthstone", "WTCG", "29509"),
             New BlizzardJuego("Heroes of the Storm", "Hero", "29489"),
             New BlizzardJuego("Overwatch", "Pro", "20991"),
